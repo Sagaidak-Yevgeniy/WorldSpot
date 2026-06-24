@@ -19,6 +19,13 @@ const truthIcon = L.divIcon({
   iconAnchor: [16, 42],
 });
 
+const opponentIcon = L.divIcon({
+  className: "pin-wrap",
+  html: '<div class="pin pin--opponent"><div class="pin__dot"></div></div>',
+  iconSize: [32, 42],
+  iconAnchor: [16, 42],
+});
+
 export function normalizeLon(lon: number): number {
   return ((((lon + 180) % 360) + 360) % 360) - 180;
 }
@@ -55,13 +62,38 @@ function ZoomLimits({ min, max }: { min: number; max: number }) {
   return null;
 }
 
-/** Keep map usable after container resize (expand/collapse). */
-function MapInvalidate({ trigger }: { trigger: boolean }) {
+/** Keep map tiles filling container after expand/resize. */
+function MapResizeFix({ active }: { active: boolean }) {
   const map = useMap();
+
   useEffect(() => {
-    const t = window.setTimeout(() => map.invalidateSize({ animate: true }), 120);
-    return () => window.clearTimeout(t);
-  }, [map, trigger]);
+    const invalidate = () => {
+      map.invalidateSize({ animate: false, pan: false });
+    };
+
+    const runBurst = () => {
+      invalidate();
+      const delays = [50, 120, 300, 500];
+      const timers = delays.map((ms) => window.setTimeout(invalidate, ms));
+      return () => timers.forEach(clearTimeout);
+    };
+
+    let cancelBurst = runBurst();
+    const widget = map.getContainer().closest(".map-widget") as HTMLElement | null;
+    const observeTarget = widget ?? map.getContainer().parentElement;
+    if (!observeTarget) return () => cancelBurst();
+
+    const ro = new ResizeObserver(() => {
+      requestAnimationFrame(invalidate);
+    });
+    ro.observe(observeTarget);
+
+    return () => {
+      cancelBurst();
+      ro.disconnect();
+    };
+  }, [map, active]);
+
   return null;
 }
 
@@ -110,6 +142,7 @@ function buildGeodesicLine(
 interface Props {
   guess: { lat: number; lon: number } | null;
   truth?: { lat: number; lon: number } | null;
+  opponentGuess?: { lat: number; lon: number } | null;
   onGuess?: (lat: number, lon: number) => void;
   startZoom?: number;
   maxZoom?: number;
@@ -123,6 +156,7 @@ interface Props {
 export function GameMap({
   guess,
   truth,
+  opponentGuess,
   onGuess,
   startZoom = 2,
   maxZoom = 15,
@@ -167,10 +201,13 @@ export function GameMap({
           noWrap={false}
         />
         <ZoomLimits min={minZoom} max={maxZoom} />
-        <MapInvalidate trigger={expanded} />
+        <MapResizeFix active={expanded} />
         <MapZoomButtons />
         {onGuess && <MapClickHandler onPick={onGuess} />}
         {guess && <Marker position={[guess.lat, normalizeLon(guess.lon)]} icon={guessIcon} />}
+        {opponentGuess && (
+          <Marker position={[opponentGuess.lat, normalizeLon(opponentGuess.lon)]} icon={opponentIcon} />
+        )}
         {truth && <Marker position={[truth.lat, normalizeLon(truth.lon)]} icon={truthIcon} />}
         {guess && truth && (
           <>

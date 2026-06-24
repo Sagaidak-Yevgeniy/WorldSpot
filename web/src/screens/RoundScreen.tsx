@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import type { GameSession, Lang, Location } from "../types";
 import { getDifficulty } from "../lib/difficulty";
 import { tr } from "../lib/i18n";
-import { panoramaUrl } from "../lib/locations";
+import { resolvePanoramaSources } from "../lib/locations";
 import { haversineKm, scoreFromDistanceKm } from "../lib/scoring";
 import { PanoramaView } from "../components/PanoramaView";
 import { GameMap } from "../components/GameMap";
@@ -30,7 +30,7 @@ export function RoundScreen({ lang, session, location, onSubmit, onMenu }: Props
 
   const total = session.locations.length;
   const roundNum = session.roundIndex + 1;
-  const src = panoramaUrl(location.panoramaFile ?? "oslo.jpg");
+  const pano = resolvePanoramaSources(location);
 
   const handleReady = useCallback(() => setReady(true), []);
 
@@ -92,8 +92,8 @@ export function RoundScreen({ lang, session, location, onSubmit, onMenu }: Props
       {intro && <div className="round__intro" />}
 
       <PanoramaView
-        key={location.id + (location.panoramaFile ?? "")}
-        src={src}
+        key={location.id + String(location.panoramaIndex ?? 0)}
+        sources={pano.sources}
         heading={location.heading}
         pitch={location.pitch}
         zoom={55}
@@ -150,7 +150,7 @@ export function RoundScreen({ lang, session, location, onSubmit, onMenu }: Props
           </button>
         )}
         <GameMap
-          mapKey={`${location.id}-${expanded ? "x" : "m"}`}
+          mapKey={`round-${location.id}`}
           guess={guess}
           onGuess={(lat, lon) => setGuess({ lat, lon })}
           startZoom={cfg.startZoom}

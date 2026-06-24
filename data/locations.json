@@ -1,58 +1,2247 @@
 {
   "locations": [
-    {"id": "oslo_01", "lat": 59.9136, "lon": 10.7377, "country": "Норвегия", "region": "Скандинавия", "panoramas": [{"file": "oslo.jpg", "commons": "Karl Johans gate Oslo 2022-08-17 01.jpg"}]},
-    {"id": "stockholm_01", "lat": 59.325, "lon": 18.071, "country": "Швеция", "region": "Скандинавия", "panoramas": [{"file": "stockholm.jpg", "commons": "Gamla stan, Stockholm.jpg"}]},
-    {"id": "copenhagen_01", "lat": 55.679, "lon": 12.591, "country": "Дания", "region": "Скандинавия", "panoramas": [{"file": "copenhagen.jpg", "commons": "Nyhavn Copenhagen.jpg"}]},
-    {"id": "reykjavik_01", "lat": 64.1466, "lon": -21.9426, "country": "Исландия", "region": "Скандинавия", "panoramas": [{"file": "reykjavik.jpg", "commons": "Reykjavik from Hallgrímskirkja.jpg"}]},
-    {"id": "helsinki_01", "lat": 60.1699, "lon": 24.9384, "country": "Финляндия", "region": "Скандинавия", "panoramas": [{"file": "helsinki.jpg", "commons": "Helsinki Cathedral Finland.jpg"}]},
-
-    {"id": "london_01", "lat": 51.508, "lon": -0.128, "country": "Великобритания", "region": "Западная Европа", "panoramas": [{"file": "london.jpg", "commons": "Trafalgar Square, London, UK - panoramio.jpg"}, {"file": "london2.jpg", "commons": "London - Westminster - panoramio.jpg"}]},
-    {"id": "paris_01", "lat": 48.8606, "lon": 2.3355, "country": "Франция", "region": "Западная Европа", "panoramas": [{"file": "paris.jpg", "commons": "Cornucopia rue Rivoli Paris.jpg"}, {"file": "paris2.jpg", "commons": "Paris - Rue de Rivoli - 26 July 2015.jpg"}]},
-    {"id": "berlin_01", "lat": 52.5163, "lon": 13.3777, "country": "Германия", "region": "Западная Европа", "panoramas": [{"file": "berlin.jpg", "commons": "Berlin - Brandenburger Tor - 03-2014.jpg"}]},
-    {"id": "amsterdam_01", "lat": 52.3676, "lon": 4.9041, "country": "Нидерланды", "region": "Западная Европа", "panoramas": [{"file": "amsterdam.jpg", "commons": "Amsterdam Canal Ring.jpg"}]},
-    {"id": "rome_01", "lat": 41.8902, "lon": 12.4922, "country": "Италия", "region": "Западная Европа", "panoramas": [{"file": "rome.jpg", "commons": "Colosseo 2020.jpg"}, {"file": "rome2.jpg", "commons": "Rome from Vittorio Emanuele Monument.jpg"}]},
-    {"id": "barcelona_01", "lat": 41.3851, "lon": 2.1734, "country": "Испания", "region": "Западная Европа", "panoramas": [{"file": "barcelona.jpg", "commons": "La Rambla Barcelona.jpg"}]},
-    {"id": "madrid_01", "lat": 40.4169, "lon": -3.7036, "country": "Испания", "region": "Западная Европа", "panoramas": [{"file": "madrid.jpg", "commons": "Puerta del Sol, Madrid.jpg"}]},
-    {"id": "lisbon_01", "lat": 38.7078, "lon": -9.1365, "country": "Португалия", "region": "Западная Европа", "panoramas": [{"file": "lisbon.jpg", "commons": "Lisbon Praça do Comércio.jpg"}]},
-    {"id": "vienna_01", "lat": 48.2082, "lon": 16.3738, "country": "Австрия", "region": "Западная Европа", "panoramas": [{"file": "vienna.jpg", "commons": "Wien - Stephansdom (3).JPG"}]},
-    {"id": "prague_01", "lat": 50.0875, "lon": 14.4213, "country": "Чехия", "region": "Западная Европа", "panoramas": [{"file": "prague.jpg", "commons": "Prague Old Town Square.jpg"}]},
-    {"id": "budapest_01", "lat": 47.5079, "lon": 19.0452, "country": "Венгрия", "region": "Западная Европа", "panoramas": [{"file": "budapest.jpg", "commons": "Hungarian Parliament Building, Budapest.jpg"}]},
-    {"id": "warsaw_01", "lat": 52.2297, "lon": 21.0122, "country": "Польша", "region": "Западная Европа", "panoramas": [{"file": "warsaw.jpg", "commons": "Warsaw Old Town Market Square.jpg"}]},
-    {"id": "krakow_01", "lat": 50.0616, "lon": 19.9373, "country": "Польша", "region": "Западная Европа", "panoramas": [{"file": "krakow.jpg", "commons": "Krakow - Kosciol Mariacki.jpg"}]},
-    {"id": "dublin_01", "lat": 53.344, "lon": -6.2675, "country": "Ирландия", "region": "Западная Европа", "panoramas": [{"file": "dublin.jpg", "commons": "Ha'penny Bridge, Dublin.jpg"}]},
-    {"id": "athens_01", "lat": 37.9715, "lon": 23.7267, "country": "Греция", "region": "Западная Европа", "panoramas": [{"file": "athens.jpg", "commons": "The Acropolis from the Areopagus.jpg"}]},
-    {"id": "moscow_01", "lat": 55.7539, "lon": 37.6208, "country": "Россия", "region": "Восточная Европа", "panoramas": [{"file": "moscow.jpg", "commons": "Red Square Moscow.jpg"}]},
-
-    {"id": "istanbul_01", "lat": 41.0256, "lon": 28.9744, "country": "Турция", "region": "Ближний Восток", "panoramas": [{"file": "istanbul.jpg", "commons": "Galata Tower 2014.jpg"}]},
-    {"id": "dubai_01", "lat": 25.1972, "lon": 55.2744, "country": "ОАЭ", "region": "Ближний Восток", "panoramas": [{"file": "dubai.jpg", "commons": "Burj Khalifa.jpg"}]},
-    {"id": "jerusalem_01", "lat": 31.7767, "lon": 35.2345, "country": "Израиль", "region": "Ближний Восток", "panoramas": [{"file": "jerusalem.jpg", "commons": "Jerusalem Western Wall.jpg"}]},
-
-    {"id": "cairo_01", "lat": 29.9792, "lon": 31.1342, "country": "Египет", "region": "Северная Африка", "panoramas": [{"file": "cairo.jpg", "commons": "The Pyramids of Giza, Egypt.jpg"}]},
-    {"id": "marrakech_01", "lat": 31.6258, "lon": -7.9891, "country": "Марокко", "region": "Северная Африка", "panoramas": [{"file": "marrakech.jpg", "commons": "Morocco-2983 - Jemaa el-Fnaa Square.jpg"}]},
-    {"id": "nairobi_01", "lat": -1.2889, "lon": 36.8233, "country": "Кения", "region": "Восточная Африка", "panoramas": [{"file": "nairobi.jpg", "commons": "Skyline of Nairobi city as seen from Uhuru Park.jpg"}]},
-    {"id": "capetown_01", "lat": -33.9249, "lon": 18.4241, "country": "ЮАР", "region": "Южная Африка", "panoramas": [{"file": "capetown.jpg", "commons": "Table Mountain from Table Bay.jpg"}]},
-
-    {"id": "mumbai_01", "lat": 18.9217, "lon": 72.8347, "country": "Индия", "region": "Южная Азия", "panoramas": [{"file": "mumbai.jpg", "commons": "Gateway of India, Mumbai.jpg"}]},
-    {"id": "delhi_01", "lat": 28.6129, "lon": 77.2295, "country": "Индия", "region": "Южная Азия", "panoramas": [{"file": "delhi.jpg", "commons": "India Gate New Delhi.jpg"}]},
-    {"id": "bangkok_01", "lat": 13.7465, "lon": 100.493, "country": "Таиланд", "region": "Юго-Восточная Азия", "panoramas": [{"file": "bangkok.jpg", "commons": "Bangkok cityscape from Wat Arun.jpg"}]},
-    {"id": "singapore_01", "lat": 1.2834, "lon": 103.8607, "country": "Сингапур", "region": "Юго-Восточная Азия", "panoramas": [{"file": "singapore.jpg", "commons": "Marina Bay Sands, Singapore.jpg"}]},
-    {"id": "tokyo_01", "lat": 35.6595, "lon": 139.7005, "country": "Япония", "region": "Восточная Азия", "panoramas": [{"file": "tokyo.jpg", "commons": "Shibuya crossing, Tokyo, Japan.jpg"}, {"file": "tokyo2.jpg", "commons": "Tokyo Tower and surrounding area.jpg"}]},
-    {"id": "seoul_01", "lat": 37.5665, "lon": 126.978, "country": "Южная Корея", "region": "Восточная Азия", "panoramas": [{"file": "seoul.jpg", "commons": "Gwanghwamun Seoul.jpg"}]},
-    {"id": "hongkong_01", "lat": 22.2819, "lon": 114.1588, "country": "Гонконг", "region": "Восточная Азия", "panoramas": [{"file": "hongkong.jpg", "commons": "Hong Kong Skyline 2012.jpg"}]},
-
-    {"id": "sydney_01", "lat": -33.8568, "lon": 151.2153, "country": "Австралия", "region": "Океания", "panoramas": [{"file": "sydney.jpg", "commons": "Sydney Opera House and Harbour Bridge Dusk (3) 2019-06-21.jpg"}]},
-    {"id": "auckland_01", "lat": -36.8485, "lon": 174.7633, "country": "Новая Зеландия", "region": "Океания", "panoramas": [{"file": "auckland.jpg", "commons": "Auckland Sky Tower.jpg"}]},
-
-    {"id": "nyc_01", "lat": 40.758, "lon": -73.9855, "country": "США", "region": "Северная Америка", "panoramas": [{"file": "nyc.jpg", "commons": "New york times square-terabass.jpg"}, {"file": "nyc2.jpg", "commons": "Manhattan skyline from Top of the Rock.jpg"}]},
-    {"id": "losangeles_01", "lat": 34.0522, "lon": -118.2437, "country": "США", "region": "Северная Америка", "panoramas": [{"file": "losangeles.jpg", "commons": "Downtown Los Angeles skyline (2013).jpg"}]},
-    {"id": "sanfrancisco_01", "lat": 37.7955, "lon": -122.3937, "country": "США", "region": "Северная Америка", "panoramas": [{"file": "sanfrancisco.jpg", "commons": "San Francisco from the Marin Headlands in August 2022.jpg"}]},
-    {"id": "chicago_01", "lat": 41.8827, "lon": -87.6233, "country": "США", "region": "Северная Америка", "panoramas": [{"file": "chicago.jpg", "commons": "Chicago skyline from Adler Planetarium.jpg"}]},
-    {"id": "toronto_01", "lat": 43.6426, "lon": -79.3871, "country": "Канада", "region": "Северная Америка", "panoramas": [{"file": "toronto.jpg", "commons": "Toronto Skyline from CN Tower.jpg"}]},
-    {"id": "havana_01", "lat": 23.1367, "lon": -82.3589, "country": "Куба", "region": "Карибы", "panoramas": [{"file": "havana.jpg", "commons": "La Habana Vieja desde el Morro.jpg"}]},
-
-    {"id": "mexico_city_01", "lat": 19.4326, "lon": -99.1332, "country": "Мексика", "region": "Северная Америка", "panoramas": [{"file": "mexico_city.jpg", "commons": "El Zócalo, Mexico City, Mexico.jpg"}]},
-    {"id": "lima_01", "lat": -12.046, "lon": -77.03, "country": "Перу", "region": "Южная Америка", "panoramas": [{"file": "lima.jpg", "commons": "Fuente, Plaza de Armas, Lima, Perú, 2015-07-28, DD 28.JPG"}]},
-    {"id": "rio_01", "lat": -22.9711, "lon": -43.1822, "country": "Бразилия", "region": "Южная Америка", "panoramas": [{"file": "rio.jpg", "commons": "Copacabana Beach 2019.jpg"}]},
-    {"id": "buenos_aires_01", "lat": -34.6037, "lon": -58.3816, "country": "Аргентина", "region": "Южная Америка", "panoramas": [{"file": "buenos_aires.jpg", "commons": "Obelisco, Buenos Aires.jpg"}]}
+    {
+      "id": "oslo_01",
+      "lat": 59.9136,
+      "lon": 10.7377,
+      "country": "Норвегия",
+      "region": "Скандинавия",
+      "panoramas": [
+        {
+          "file": "oslo.jpg",
+          "commons": "Karl Johans gate Oslo 2022-08-17 01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "stockholm_01",
+      "lat": 59.325,
+      "lon": 18.071,
+      "country": "Швеция",
+      "region": "Скандинавия",
+      "panoramas": [
+        {
+          "file": "stockholm.jpg",
+          "commons": "Gamla stan, Stockholm.jpg"
+        }
+      ]
+    },
+    {
+      "id": "copenhagen_01",
+      "lat": 55.679,
+      "lon": 12.591,
+      "country": "Дания",
+      "region": "Скандинавия",
+      "panoramas": [
+        {
+          "file": "copenhagen.jpg",
+          "commons": "Nyhavn Copenhagen.jpg"
+        }
+      ]
+    },
+    {
+      "id": "reykjavik_01",
+      "lat": 64.1466,
+      "lon": -21.9426,
+      "country": "Исландия",
+      "region": "Скандинавия",
+      "panoramas": [
+        {
+          "file": "reykjavik.jpg",
+          "commons": "Iceland - Reykjavik 049 - panorama from the Perlan (6571033387).jpg"
+        }
+      ]
+    },
+    {
+      "id": "helsinki_01",
+      "lat": 60.1699,
+      "lon": 24.9384,
+      "country": "Финляндия",
+      "region": "Скандинавия",
+      "panoramas": [
+        {
+          "file": "helsinki.jpg",
+          "commons": "Senate Square - Senaatintori - Senatstorget, Helsinki, Finland.jpg"
+        }
+      ]
+    },
+    {
+      "id": "london_01",
+      "lat": 51.508,
+      "lon": -0.128,
+      "country": "Великобритания",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "london.jpg",
+          "commons": "Trafalgar Square - Panorama - -ViveLeFrance (22994614026).jpg"
+        },
+        {
+          "file": "london2.jpg",
+          "commons": "Westminster London June 2016 panorama 1.jpg"
+        }
+      ]
+    },
+    {
+      "id": "paris_01",
+      "lat": 48.8606,
+      "lon": 2.3355,
+      "country": "Франция",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "paris.jpg",
+          "commons": "Cornucopia rue Rivoli Paris.jpg"
+        },
+        {
+          "file": "paris2.jpg",
+          "commons": "Panorama on the Rue de Rivoli.jpg"
+        }
+      ]
+    },
+    {
+      "id": "berlin_01",
+      "lat": 52.5163,
+      "lon": 13.3777,
+      "country": "Германия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "berlin.jpg",
+          "commons": "Brandenburger Tor nachts 2012-07.jpg"
+        }
+      ]
+    },
+    {
+      "id": "amsterdam_01",
+      "lat": 52.3676,
+      "lon": 4.9041,
+      "country": "Нидерланды",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "amsterdam.jpg",
+          "commons": "Canal panorama (18231094058) (2).jpg"
+        }
+      ]
+    },
+    {
+      "id": "rome_01",
+      "lat": 41.8902,
+      "lon": 12.4922,
+      "country": "Италия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "rome.jpg",
+          "commons": "Colosseo 2020.jpg"
+        },
+        {
+          "file": "rome2.jpg",
+          "commons": "Rome Colosseum interior panorama 2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "barcelona_01",
+      "lat": 41.3851,
+      "lon": 2.1734,
+      "country": "Испания",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "barcelona.jpg",
+          "commons": "La Rambla Barcelona bird stall 1991.jpg"
+        }
+      ]
+    },
+    {
+      "id": "madrid_01",
+      "lat": 40.4169,
+      "lon": -3.7036,
+      "country": "Испания",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "madrid.jpg",
+          "commons": "Puerta del Sol, Madrid.jpg"
+        }
+      ]
+    },
+    {
+      "id": "lisbon_01",
+      "lat": 38.7078,
+      "lon": -9.1365,
+      "country": "Португалия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "lisbon.jpg",
+          "commons": "View of Praça do Comércio from the Tagus River in Lisbon, 20250604 2038 9656.jpg"
+        }
+      ]
+    },
+    {
+      "id": "vienna_01",
+      "lat": 48.2082,
+      "lon": 16.3738,
+      "country": "Австрия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "vienna.jpg",
+          "commons": "Stephansdom Panorama Innen.jpg"
+        }
+      ]
+    },
+    {
+      "id": "prague_01",
+      "lat": 50.0875,
+      "lon": 14.4213,
+      "country": "Чехия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "prague.jpg",
+          "commons": "20190816 Rynek Staromiejski w Pradze 1143 5231.jpg"
+        }
+      ]
+    },
+    {
+      "id": "budapest_01",
+      "lat": 47.5079,
+      "lon": 19.0452,
+      "country": "Венгрия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "budapest.jpg",
+          "commons": "HUN-2015-Budapest-Hungarian Parliament (Budapest) 2015-01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "warsaw_01",
+      "lat": 52.2297,
+      "lon": 21.0122,
+      "country": "Польша",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "warsaw.jpg",
+          "commons": "Panorama from stare miasto.jpg"
+        }
+      ]
+    },
+    {
+      "id": "krakow_01",
+      "lat": 50.0616,
+      "lon": 19.9373,
+      "country": "Польша",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "krakow.jpg",
+          "commons": "Krakow - Kosciol Mariacki.jpg"
+        }
+      ]
+    },
+    {
+      "id": "dublin_01",
+      "lat": 53.344,
+      "lon": -6.2675,
+      "country": "Ирландия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "dublin.jpg",
+          "commons": "Ha'penny Bridge, Dublin.jpg"
+        }
+      ]
+    },
+    {
+      "id": "athens_01",
+      "lat": 37.9715,
+      "lon": 23.7267,
+      "country": "Греция",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "athens.jpg",
+          "commons": "Athens-acropolis-east-end-2023-05-panorama.jpg"
+        }
+      ]
+    },
+    {
+      "id": "moscow_01",
+      "lat": 55.7539,
+      "lon": 37.6208,
+      "country": "Россия",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "moscow.jpg",
+          "commons": "Panorama 360 Red Square.jpg"
+        }
+      ]
+    },
+    {
+      "id": "istanbul_01",
+      "lat": 41.0256,
+      "lon": 28.9744,
+      "country": "Турция",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "istanbul.jpg",
+          "commons": "20101106 Galata Tower Istanbul Turkey Panorama.jpg"
+        }
+      ]
+    },
+    {
+      "id": "dubai_01",
+      "lat": 25.1972,
+      "lon": 55.2744,
+      "country": "ОАЭ",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "dubai.jpg",
+          "commons": "The Dubai Fountain & Burj Khalifa Pixabay.jpg"
+        }
+      ]
+    },
+    {
+      "id": "jerusalem_01",
+      "lat": 31.7767,
+      "lon": 35.2345,
+      "country": "Израиль",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "jerusalem.jpg",
+          "commons": "16-03-30-Klagemauer Jerusalem RalfR-DSCF7673.jpg"
+        }
+      ]
+    },
+    {
+      "id": "cairo_01",
+      "lat": 29.9792,
+      "lon": 31.1342,
+      "country": "Египет",
+      "region": "Северная Африка",
+      "panoramas": [
+        {
+          "file": "cairo.jpg",
+          "commons": "Giza pyramid complex - 360.jpg"
+        }
+      ]
+    },
+    {
+      "id": "marrakech_01",
+      "lat": 31.6258,
+      "lon": -7.9891,
+      "country": "Марокко",
+      "region": "Северная Африка",
+      "panoramas": [
+        {
+          "file": "marrakech.jpg",
+          "commons": "Drawing a henna, Jemaa el-Fnaa, Marrakesh (وشم الحناء، جامع الفنا، مراكش).jpg"
+        }
+      ]
+    },
+    {
+      "id": "nairobi_01",
+      "lat": -1.2889,
+      "lon": 36.8233,
+      "country": "Кения",
+      "region": "Восточная Африка",
+      "panoramas": [
+        {
+          "file": "nairobi.jpg",
+          "commons": "Skyline of Nairobi city as seen from Uhuru Park.jpg"
+        }
+      ]
+    },
+    {
+      "id": "capetown_01",
+      "lat": -33.9249,
+      "lon": 18.4241,
+      "country": "ЮАР",
+      "region": "Южная Африка",
+      "panoramas": [
+        {
+          "file": "capetown.jpg",
+          "commons": "Table Mountain from Table Bay.jpg"
+        }
+      ]
+    },
+    {
+      "id": "mumbai_01",
+      "lat": 18.9217,
+      "lon": 72.8347,
+      "country": "Индия",
+      "region": "Южная Азия",
+      "panoramas": [
+        {
+          "file": "mumbai.jpg",
+          "commons": "Gateway of India, Mumbai.jpg"
+        }
+      ]
+    },
+    {
+      "id": "delhi_01",
+      "lat": 28.6129,
+      "lon": 77.2295,
+      "country": "Индия",
+      "region": "Южная Азия",
+      "panoramas": [
+        {
+          "file": "delhi.jpg",
+          "commons": "India Gate New Delhi.jpg"
+        }
+      ]
+    },
+    {
+      "id": "bangkok_01",
+      "lat": 13.7465,
+      "lon": 100.493,
+      "country": "Таиланд",
+      "region": "Юго-Восточная Азия",
+      "panoramas": [
+        {
+          "file": "bangkok.jpg",
+          "commons": "Bangkok Pano.jpg"
+        }
+      ]
+    },
+    {
+      "id": "singapore_01",
+      "lat": 1.2834,
+      "lon": 103.8607,
+      "country": "Сингапур",
+      "region": "Юго-Восточная Азия",
+      "panoramas": [
+        {
+          "file": "singapore.jpg",
+          "commons": "Marina Bay Sands, Singapore.jpg"
+        }
+      ]
+    },
+    {
+      "id": "tokyo_01",
+      "lat": 35.6595,
+      "lon": 139.7005,
+      "country": "Япония",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "tokyo.jpg",
+          "commons": "Shibuya crossing, Tokyo, Japan.jpg"
+        },
+        {
+          "file": "tokyo2.jpg",
+          "commons": "Minato City, Tokyo, Japan.jpg"
+        }
+      ]
+    },
+    {
+      "id": "seoul_01",
+      "lat": 37.5665,
+      "lon": 126.978,
+      "country": "Южная Корея",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "seoul.jpg",
+          "commons": "Yi Sun-sin 4.jpg"
+        }
+      ]
+    },
+    {
+      "id": "hongkong_01",
+      "lat": 22.2819,
+      "lon": 114.1588,
+      "country": "Гонконг",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "hongkong.jpg",
+          "commons": "Hong Kong Skyline Panorama - Dec 2008.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sydney_01",
+      "lat": -33.8568,
+      "lon": 151.2153,
+      "country": "Австралия",
+      "region": "Океания",
+      "panoramas": [
+        {
+          "file": "sydney.jpg",
+          "commons": "Sydney Opera House and Harbour Bridge Dusk (3) 2019-06-21.jpg"
+        }
+      ]
+    },
+    {
+      "id": "auckland_01",
+      "lat": -36.8485,
+      "lon": 174.7633,
+      "country": "Новая Зеландия",
+      "region": "Океания",
+      "panoramas": [
+        {
+          "file": "auckland.jpg",
+          "commons": "Auckland Sky Tower.jpg"
+        }
+      ]
+    },
+    {
+      "id": "nyc_01",
+      "lat": 40.758,
+      "lon": -73.9855,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "nyc.jpg",
+          "commons": "New york times square-terabass.jpg"
+        },
+        {
+          "file": "nyc2.jpg",
+          "commons": "Midtown Manhattan from Weehawken September 2021 panorama 1.jpg"
+        }
+      ]
+    },
+    {
+      "id": "losangeles_01",
+      "lat": 34.0522,
+      "lon": -118.2437,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "losangeles.jpg",
+          "commons": "Los Angeles Pollution.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sanfrancisco_01",
+      "lat": 37.7955,
+      "lon": -122.3937,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "sanfrancisco.jpg",
+          "commons": "San Francisco from the Marin Headlands in August 2022.jpg"
+        }
+      ]
+    },
+    {
+      "id": "chicago_01",
+      "lat": 41.8827,
+      "lon": -87.6233,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "chicago.jpg",
+          "commons": "Chicago from North Avenue Beach June 2015 panorama 2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "toronto_01",
+      "lat": 43.6426,
+      "lon": -79.3871,
+      "country": "Канада",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "toronto.jpg",
+          "commons": "122 - Toronto - Septembre 2009.jpg"
+        }
+      ]
+    },
+    {
+      "id": "havana_01",
+      "lat": 23.1367,
+      "lon": -82.3589,
+      "country": "Куба",
+      "region": "Карибы",
+      "panoramas": [
+        {
+          "file": "havana.jpg",
+          "commons": "Havana-Cuba-panorama.jpg"
+        }
+      ]
+    },
+    {
+      "id": "mexico_city_01",
+      "lat": 19.4326,
+      "lon": -99.1332,
+      "country": "Мексика",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "mexico_city.jpg",
+          "commons": "360° Panorama Zocalo Mexico City.jpg"
+        }
+      ]
+    },
+    {
+      "id": "lima_01",
+      "lat": -12.046,
+      "lon": -77.03,
+      "country": "Перу",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "lima.jpg",
+          "commons": "Fuente, Plaza de Armas, Lima, Perú, 2015-07-28, DD 28.JPG"
+        }
+      ]
+    },
+    {
+      "id": "rio_01",
+      "lat": -22.9711,
+      "lon": -43.1822,
+      "country": "Бразилия",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "rio.jpg",
+          "commons": "Copacabana, Rio de Janeiro.jpg"
+        }
+      ]
+    },
+    {
+      "id": "buenos_aires_01",
+      "lat": -34.6037,
+      "lon": -58.3816,
+      "country": "Аргентина",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "buenos_aires.jpg",
+          "commons": "Panorama Obelisco de Buenos Aires 2019.jpg"
+        }
+      ]
+    },
+    {
+      "id": "munich_01",
+      "lat": 48.1372,
+      "lon": 11.5755,
+      "country": "Германия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "munich.jpg",
+          "commons": "Munich skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "frankfurt_01",
+      "lat": 50.1109,
+      "lon": 8.6821,
+      "country": "Германия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "frankfurt.jpg",
+          "commons": "FrankfurtOder asv2022-07 img27 Wasserwerk.jpg"
+        }
+      ]
+    },
+    {
+      "id": "hamburg_01",
+      "lat": 53.5511,
+      "lon": 9.9937,
+      "country": "Германия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "hamburg.jpg",
+          "commons": "Hamburg HafenCity Panorama.jpg"
+        }
+      ]
+    },
+    {
+      "id": "cologne_01",
+      "lat": 50.9375,
+      "lon": 6.9603,
+      "country": "Германия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "cologne.jpg",
+          "commons": "Pano-bayer-LEV-uncropped.jpg"
+        }
+      ]
+    },
+    {
+      "id": "dresden_01",
+      "lat": 51.0504,
+      "lon": 13.7373,
+      "country": "Германия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "dresden.jpg",
+          "commons": "Berlin - panoramio (116).jpg"
+        }
+      ]
+    },
+    {
+      "id": "zurich_01",
+      "lat": 47.3769,
+      "lon": 8.5417,
+      "country": "Швейцария",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "zurich.jpg",
+          "commons": "Rapperswil SG Panorama Februar 2011.jpg"
+        }
+      ]
+    },
+    {
+      "id": "geneva_01",
+      "lat": 46.2044,
+      "lon": 6.1432,
+      "country": "Швейцария",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "geneva.jpg",
+          "commons": "WIPO UPOV HQ.jpg"
+        }
+      ]
+    },
+    {
+      "id": "brussels_01",
+      "lat": 50.8466,
+      "lon": 4.3528,
+      "country": "Бельгия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "brussels.jpg",
+          "commons": "Grand Place, Brussels.jpg"
+        }
+      ]
+    },
+    {
+      "id": "edinburgh_01",
+      "lat": 55.9533,
+      "lon": -3.1883,
+      "country": "Великобритания",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "edinburgh.jpg",
+          "commons": "Edinburgh Castle from Princes Street.jpg"
+        }
+      ]
+    },
+    {
+      "id": "manchester_01",
+      "lat": 53.4808,
+      "lon": -2.2426,
+      "country": "Великобритания",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "manchester.jpg",
+          "commons": "Manchester Town Hall from St Peter's Square.jpg"
+        }
+      ]
+    },
+    {
+      "id": "liverpool_01",
+      "lat": 53.4084,
+      "lon": -2.9916,
+      "country": "Великобритания",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "liverpool.jpg",
+          "commons": "Liverpool Pier Head.jpg"
+        }
+      ]
+    },
+    {
+      "id": "milan_01",
+      "lat": 45.4642,
+      "lon": 9.19,
+      "country": "Италия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "milan.jpg",
+          "commons": "Милан. Италия (8191573056).jpg"
+        }
+      ]
+    },
+    {
+      "id": "venice_01",
+      "lat": 45.4343,
+      "lon": 12.3388,
+      "country": "Италия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "venice.jpg",
+          "commons": "Венеция. Гранд Канал. Панорама у моста Риальто ~1901-1908егг 6a23700-6a23792u e1.jpg"
+        }
+      ]
+    },
+    {
+      "id": "florence_01",
+      "lat": 43.7696,
+      "lon": 11.2558,
+      "country": "Италия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "florence.jpg",
+          "commons": "Florence, Italy, Panorama of Florence.jpg"
+        }
+      ]
+    },
+    {
+      "id": "naples_01",
+      "lat": 40.8518,
+      "lon": 14.2681,
+      "country": "Италия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "naples.jpg",
+          "commons": "Naples from Castel Sant'Elmo.jpg"
+        }
+      ]
+    },
+    {
+      "id": "porto_01",
+      "lat": 41.1579,
+      "lon": -8.6291,
+      "country": "Португалия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "porto.jpg",
+          "commons": "Porto - Cais da Ribeira.jpg"
+        }
+      ]
+    },
+    {
+      "id": "seville_01",
+      "lat": 37.3891,
+      "lon": -5.9845,
+      "country": "Испания",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "seville.jpg",
+          "commons": "Seville - Plaza de España.jpg"
+        }
+      ]
+    },
+    {
+      "id": "valencia_01",
+      "lat": 39.4699,
+      "lon": -0.3763,
+      "country": "Испания",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "valencia.jpg",
+          "commons": "Ciudad de las Artes y las Ciencias, Valencia.jpg"
+        }
+      ]
+    },
+    {
+      "id": "lyon_01",
+      "lat": 45.764,
+      "lon": 4.8357,
+      "country": "Франция",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "lyon.jpg",
+          "commons": "Lyon - Basilique Notre-Dame de Fourvière.jpg"
+        }
+      ]
+    },
+    {
+      "id": "marseille_01",
+      "lat": 43.2965,
+      "lon": 5.3698,
+      "country": "Франция",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "marseille.jpg",
+          "commons": "Marseille Vieux-Port.jpg"
+        }
+      ]
+    },
+    {
+      "id": "nice_01",
+      "lat": 43.7102,
+      "lon": 7.262,
+      "country": "Франция",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "nice.jpg",
+          "commons": "Nice Promenade des Anglais.jpg"
+        }
+      ]
+    },
+    {
+      "id": "zagreb_01",
+      "lat": 45.815,
+      "lon": 15.9819,
+      "country": "Хорватия",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "zagreb.jpg",
+          "commons": "Zagreb Cathedral and Kaptol.jpg"
+        }
+      ]
+    },
+    {
+      "id": "belgrade_01",
+      "lat": 44.7866,
+      "lon": 20.4489,
+      "country": "Сербия",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "belgrade.jpg",
+          "commons": "Belgrade Fortress and Kalemegdan.jpg"
+        }
+      ]
+    },
+    {
+      "id": "bucharest_01",
+      "lat": 44.4268,
+      "lon": 26.1025,
+      "country": "Румыния",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "bucharest.jpg",
+          "commons": "Palace of the Parliament, Bucharest.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sofia_01",
+      "lat": 42.6977,
+      "lon": 23.3219,
+      "country": "Болгария",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "sofia.jpg",
+          "commons": "Alexander Nevsky Cathedral, Sofia.jpg"
+        }
+      ]
+    },
+    {
+      "id": "tallinn_01",
+      "lat": 59.437,
+      "lon": 24.7536,
+      "country": "Эстония",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "tallinn.jpg",
+          "commons": "Tallinn Old Town panorama.jpg"
+        }
+      ]
+    },
+    {
+      "id": "riga_01",
+      "lat": 56.9496,
+      "lon": 24.1052,
+      "country": "Латвия",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "riga.jpg",
+          "commons": "Riga Old Town from St Peter's Church.jpg"
+        }
+      ]
+    },
+    {
+      "id": "vilnius_01",
+      "lat": 54.6872,
+      "lon": 25.2797,
+      "country": "Литва",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "vilnius.jpg",
+          "commons": "Vilnius Cathedral Square.jpg"
+        }
+      ]
+    },
+    {
+      "id": "ljubljana_01",
+      "lat": 46.0569,
+      "lon": 14.5058,
+      "country": "Словения",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "ljubljana.jpg",
+          "commons": "Ljubljana Triple Bridge.jpg"
+        }
+      ]
+    },
+    {
+      "id": "bratislava_01",
+      "lat": 48.1486,
+      "lon": 17.1077,
+      "country": "Словакия",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "bratislava.jpg",
+          "commons": "Bratislava Castle.jpg"
+        }
+      ]
+    },
+    {
+      "id": "beijing_01",
+      "lat": 39.9042,
+      "lon": 116.4074,
+      "country": "Китай",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "beijing.jpg",
+          "commons": "Forbidden City Beijing.jpg"
+        }
+      ]
+    },
+    {
+      "id": "shanghai_01",
+      "lat": 31.2304,
+      "lon": 121.4737,
+      "country": "Китай",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "shanghai.jpg",
+          "commons": "Shanghai Pudong skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "osaka_01",
+      "lat": 34.6937,
+      "lon": 135.5023,
+      "country": "Япония",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "osaka.jpg",
+          "commons": "Osaka Castle.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kyoto_01",
+      "lat": 35.0116,
+      "lon": 135.7681,
+      "country": "Япония",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "kyoto.jpg",
+          "commons": "Kiyomizu-dera Kyoto.jpg"
+        }
+      ]
+    },
+    {
+      "id": "busan_01",
+      "lat": 35.1796,
+      "lon": 129.0756,
+      "country": "Южная Корея",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "busan.jpg",
+          "commons": "Busan Haeundae Beach.jpg"
+        }
+      ]
+    },
+    {
+      "id": "taipei_01",
+      "lat": 25.033,
+      "lon": 121.5654,
+      "country": "Тайвань",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "taipei.jpg",
+          "commons": "Taipei 101 from Elephant Mountain.jpg"
+        }
+      ]
+    },
+    {
+      "id": "manila_01",
+      "lat": 14.5995,
+      "lon": 120.9842,
+      "country": "Филиппины",
+      "region": "Юго-Восточная Азия",
+      "panoramas": [
+        {
+          "file": "manila.jpg",
+          "commons": "Manila Bay sunset.jpg"
+        }
+      ]
+    },
+    {
+      "id": "jakarta_01",
+      "lat": -6.2088,
+      "lon": 106.8456,
+      "country": "Индонезия",
+      "region": "Юго-Восточная Азия",
+      "panoramas": [
+        {
+          "file": "jakarta.jpg",
+          "commons": "Jakarta skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kuala_lumpur_01",
+      "lat": 3.139,
+      "lon": 101.6869,
+      "country": "Малайзия",
+      "region": "Юго-Восточная Азия",
+      "panoramas": [
+        {
+          "file": "kuala_lumpur.jpg",
+          "commons": "Petronas Towers KL.jpg"
+        }
+      ]
+    },
+    {
+      "id": "hanoi_01",
+      "lat": 21.0285,
+      "lon": 105.8542,
+      "country": "Вьетнам",
+      "region": "Юго-Восточная Азия",
+      "panoramas": [
+        {
+          "file": "hanoi.jpg",
+          "commons": "Hoan Kiem Lake Hanoi.jpg"
+        }
+      ]
+    },
+    {
+      "id": "ho_chi_minh_01",
+      "lat": 10.8231,
+      "lon": 106.6297,
+      "country": "Вьетнам",
+      "region": "Юго-Восточная Азия",
+      "panoramas": [
+        {
+          "file": "ho_chi_minh.jpg",
+          "commons": "Ho Chi Minh City skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "colombo_01",
+      "lat": 6.9271,
+      "lon": 79.8612,
+      "country": "Шри-Ланка",
+      "region": "Южная Азия",
+      "panoramas": [
+        {
+          "file": "colombo.jpg",
+          "commons": "Colombo skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kathmandu_01",
+      "lat": 27.7172,
+      "lon": 85.324,
+      "country": "Непал",
+      "region": "Южная Азия",
+      "panoramas": [
+        {
+          "file": "kathmandu.jpg",
+          "commons": "Kathmandu Durbar Square.jpg"
+        }
+      ]
+    },
+    {
+      "id": "tashkent_01",
+      "lat": 41.2995,
+      "lon": 69.2401,
+      "country": "Узбекистан",
+      "region": "Центральная Азия",
+      "panoramas": [
+        {
+          "file": "tashkent.jpg",
+          "commons": "Tashkent Independence Square.jpg"
+        }
+      ]
+    },
+    {
+      "id": "almaty_01",
+      "lat": 43.222,
+      "lon": 76.8512,
+      "country": "Казахстан",
+      "region": "Центральная Азия",
+      "panoramas": [
+        {
+          "file": "almaty.jpg",
+          "commons": "Almaty Kok Tobe.jpg"
+        }
+      ]
+    },
+    {
+      "id": "baku_01",
+      "lat": 40.4093,
+      "lon": 49.8671,
+      "country": "Азербайджан",
+      "region": "Кавказ",
+      "panoramas": [
+        {
+          "file": "baku.jpg",
+          "commons": "Baku Flame Towers.jpg"
+        }
+      ]
+    },
+    {
+      "id": "tbilisi_01",
+      "lat": 41.7151,
+      "lon": 44.8271,
+      "country": "Грузия",
+      "region": "Кавказ",
+      "panoramas": [
+        {
+          "file": "tbilisi.jpg",
+          "commons": "Tbilisi Old Town.jpg"
+        }
+      ]
+    },
+    {
+      "id": "yerevan_01",
+      "lat": 40.1792,
+      "lon": 44.4991,
+      "country": "Армения",
+      "region": "Кавказ",
+      "panoramas": [
+        {
+          "file": "yerevan.jpg",
+          "commons": "Yerevan Cascade.jpg"
+        }
+      ]
+    },
+    {
+      "id": "boston_01",
+      "lat": 42.3601,
+      "lon": -71.0589,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "boston.jpg",
+          "commons": "Boston skyline from Cambridge.jpg"
+        }
+      ]
+    },
+    {
+      "id": "miami_01",
+      "lat": 25.7617,
+      "lon": -80.1918,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "miami.jpg",
+          "commons": "Miami Beach skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "seattle_01",
+      "lat": 47.6062,
+      "lon": -122.3321,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "seattle.jpg",
+          "commons": "Seattle skyline from Kerry Park.jpg"
+        }
+      ]
+    },
+    {
+      "id": "denver_01",
+      "lat": 39.7392,
+      "lon": -104.9903,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "denver.jpg",
+          "commons": "Denver skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "las_vegas_01",
+      "lat": 36.1699,
+      "lon": -115.1398,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "las_vegas.jpg",
+          "commons": "Las Vegas Strip at night.jpg"
+        }
+      ]
+    },
+    {
+      "id": "washington_dc_01",
+      "lat": 38.9072,
+      "lon": -77.0369,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "washington_dc.jpg",
+          "commons": "Washington Monument and Capitol.jpg"
+        }
+      ]
+    },
+    {
+      "id": "philadelphia_01",
+      "lat": 39.9526,
+      "lon": -75.1652,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "philadelphia.jpg",
+          "commons": "Philadelphia skyline from Camden.jpg"
+        }
+      ]
+    },
+    {
+      "id": "new_orleans_01",
+      "lat": 29.9511,
+      "lon": -90.0715,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "new_orleans.jpg",
+          "commons": "New Orleans French Quarter.jpg"
+        }
+      ]
+    },
+    {
+      "id": "atlanta_01",
+      "lat": 33.749,
+      "lon": -84.388,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "atlanta.jpg",
+          "commons": "Atlanta skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "vancouver_01",
+      "lat": 49.2827,
+      "lon": -123.1207,
+      "country": "Канада",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "vancouver.jpg",
+          "commons": "Vancouver skyline from Stanley Park.jpg"
+        }
+      ]
+    },
+    {
+      "id": "montreal_01",
+      "lat": 45.5017,
+      "lon": -73.5673,
+      "country": "Канада",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "montreal.jpg",
+          "commons": "Montreal Old Port.jpg"
+        }
+      ]
+    },
+    {
+      "id": "quebec_city_01",
+      "lat": 46.8139,
+      "lon": -71.208,
+      "country": "Канада",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "quebec_city.jpg",
+          "commons": "Quebec City Château Frontenac.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sao_paulo_01",
+      "lat": -23.5505,
+      "lon": -46.6333,
+      "country": "Бразилия",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "sao_paulo.jpg",
+          "commons": "São Paulo skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "santiago_01",
+      "lat": -33.4489,
+      "lon": -70.6693,
+      "country": "Чили",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "santiago.jpg",
+          "commons": "Santiago de Chile skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "bogota_01",
+      "lat": 4.711,
+      "lon": -74.0721,
+      "country": "Колумбия",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "bogota.jpg",
+          "commons": "Bogotá La Candelaria.jpg"
+        }
+      ]
+    },
+    {
+      "id": "quito_01",
+      "lat": -0.1807,
+      "lon": -78.4678,
+      "country": "Эквадор",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "quito.jpg",
+          "commons": "Quito historic center.jpg"
+        }
+      ]
+    },
+    {
+      "id": "montevideo_01",
+      "lat": -34.9011,
+      "lon": -56.1645,
+      "country": "Уругвай",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "montevideo.jpg",
+          "commons": "Montevideo Rambla.jpg"
+        }
+      ]
+    },
+    {
+      "id": "lagos_01",
+      "lat": 6.5244,
+      "lon": 3.3792,
+      "country": "Нигерия",
+      "region": "Западная Африка",
+      "panoramas": [
+        {
+          "file": "lagos.jpg",
+          "commons": "Lagos skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "accra_01",
+      "lat": 5.6037,
+      "lon": -0.187,
+      "country": "Гана",
+      "region": "Западная Африка",
+      "panoramas": [
+        {
+          "file": "accra.jpg",
+          "commons": "Independence Arch Accra.jpg"
+        }
+      ]
+    },
+    {
+      "id": "casablanca_01",
+      "lat": 33.5731,
+      "lon": -7.5898,
+      "country": "Марокко",
+      "region": "Северная Африка",
+      "panoramas": [
+        {
+          "file": "casablanca.jpg",
+          "commons": "Hassan II Mosque Casablanca.jpg"
+        }
+      ]
+    },
+    {
+      "id": "tunis_01",
+      "lat": 36.8065,
+      "lon": 10.1815,
+      "country": "Тунис",
+      "region": "Северная Африка",
+      "panoramas": [
+        {
+          "file": "tunis.jpg",
+          "commons": "Tunis Medina.jpg"
+        }
+      ]
+    },
+    {
+      "id": "addis_ababa_01",
+      "lat": 9.032,
+      "lon": 38.7469,
+      "country": "Эфиопия",
+      "region": "Восточная Африка",
+      "panoramas": [
+        {
+          "file": "addis_ababa.jpg",
+          "commons": "Addis Ababa skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "dar_es_salaam_01",
+      "lat": -6.7924,
+      "lon": 39.2083,
+      "country": "Танзания",
+      "region": "Восточная Африка",
+      "panoramas": [
+        {
+          "file": "dar_es_salaam.jpg",
+          "commons": "Dar es Salaam harbour.jpg"
+        }
+      ]
+    },
+    {
+      "id": "perth_01",
+      "lat": -31.9505,
+      "lon": 115.8605,
+      "country": "Австралия",
+      "region": "Океания",
+      "panoramas": [
+        {
+          "file": "perth.jpg",
+          "commons": "Perth skyline from Kings Park.jpg"
+        }
+      ]
+    },
+    {
+      "id": "melbourne_01",
+      "lat": -37.8136,
+      "lon": 144.9631,
+      "country": "Австралия",
+      "region": "Океания",
+      "panoramas": [
+        {
+          "file": "melbourne.jpg",
+          "commons": "Melbourne skyline from Yarra River.jpg"
+        }
+      ]
+    },
+    {
+      "id": "brisbane_01",
+      "lat": -27.4698,
+      "lon": 153.0251,
+      "country": "Австралия",
+      "region": "Океания",
+      "panoramas": [
+        {
+          "file": "brisbane.jpg",
+          "commons": "Brisbane skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "christchurch_01",
+      "lat": -43.5321,
+      "lon": 172.6362,
+      "country": "Новая Зеландия",
+      "region": "Океания",
+      "panoramas": [
+        {
+          "file": "christchurch.jpg",
+          "commons": "Christchurch Cathedral Square.jpg"
+        }
+      ]
+    },
+    {
+      "id": "wellington_01",
+      "lat": -41.2865,
+      "lon": 174.7762,
+      "country": "Новая Зеландия",
+      "region": "Океания",
+      "panoramas": [
+        {
+          "file": "wellington.jpg",
+          "commons": "Wellington harbour.jpg"
+        }
+      ]
+    },
+    {
+      "id": "doha_01",
+      "lat": 25.2854,
+      "lon": 51.531,
+      "country": "Катар",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "doha.jpg",
+          "commons": "Doha skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "riyadh_01",
+      "lat": 24.7136,
+      "lon": 46.6753,
+      "country": "Саудовская Аравия",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "riyadh.jpg",
+          "commons": "Riyadh Kingdom Centre.jpg"
+        }
+      ]
+    },
+    {
+      "id": "tehran_01",
+      "lat": 35.6892,
+      "lon": 51.389,
+      "country": "Иран",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "tehran.jpg",
+          "commons": "Tehran Milad Tower.jpg"
+        }
+      ]
+    },
+    {
+      "id": "amman_01",
+      "lat": 31.9454,
+      "lon": 35.9284,
+      "country": "Иордания",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "amman.jpg",
+          "commons": "Amman Citadel.jpg"
+        }
+      ]
+    },
+    {
+      "id": "beirut_01",
+      "lat": 33.8938,
+      "lon": 35.5018,
+      "country": "Ливан",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "beirut.jpg",
+          "commons": "Beirut Raouche Rocks.jpg"
+        }
+      ]
+    },
+    {
+      "id": "minsk_01",
+      "lat": 53.9045,
+      "lon": 27.5615,
+      "country": "Беларусь",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "minsk.jpg",
+          "commons": "Minsk Independence Square.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kiev_01",
+      "lat": 50.4501,
+      "lon": 30.5234,
+      "country": "Украина",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "kiev.jpg",
+          "commons": "Kyiv Maidan Nezalezhnosti.jpg"
+        }
+      ]
+    },
+    {
+      "id": "st_petersburg_01",
+      "lat": 59.9343,
+      "lon": 30.3351,
+      "country": "Россия",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "st_petersburg.jpg",
+          "commons": "Saint Petersburg Palace Bridge.jpg"
+        }
+      ]
+    },
+    {
+      "id": "novosibirsk_01",
+      "lat": 55.0084,
+      "lon": 82.9357,
+      "country": "Россия",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "novosibirsk.jpg",
+          "commons": "Novosibirsk Opera and Ballet Theatre.jpg"
+        }
+      ]
+    },
+    {
+      "id": "vladivostok_01",
+      "lat": 43.1332,
+      "lon": 131.9113,
+      "country": "Россия",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "vladivostok.jpg",
+          "commons": "Vladivostok Golden Bridge.jpg"
+        }
+      ]
+    },
+    {
+      "id": "ulaanbaatar_01",
+      "lat": 47.8864,
+      "lon": 106.9057,
+      "country": "Монголия",
+      "region": "Восточная Азия",
+      "panoramas": [
+        {
+          "file": "ulaanbaatar.jpg",
+          "commons": "Ulaanbaatar Sükhbaatar Square.jpg"
+        }
+      ]
+    },
+    {
+      "id": "phnom_penh_01",
+      "lat": 11.5564,
+      "lon": 104.9282,
+      "country": "Камбоджа",
+      "region": "Юго-Восточная Азия",
+      "panoramas": [
+        {
+          "file": "phnom_penh.jpg",
+          "commons": "Phnom Penh Royal Palace.jpg"
+        }
+      ]
+    },
+    {
+      "id": "yangon_01",
+      "lat": 16.8661,
+      "lon": 96.1951,
+      "country": "Мьянма",
+      "region": "Юго-Восточная Азия",
+      "panoramas": [
+        {
+          "file": "yangon.jpg",
+          "commons": "Shwedagon Pagoda Yangon.jpg"
+        }
+      ]
+    },
+    {
+      "id": "dhaka_01",
+      "lat": 23.8103,
+      "lon": 90.4125,
+      "country": "Бангладеш",
+      "region": "Южная Азия",
+      "panoramas": [
+        {
+          "file": "dhaka.jpg",
+          "commons": "Dhaka Lalbagh Fort.jpg"
+        }
+      ]
+    },
+    {
+      "id": "islamabad_01",
+      "lat": 33.6844,
+      "lon": 73.0479,
+      "country": "Пакистан",
+      "region": "Южная Азия",
+      "panoramas": [
+        {
+          "file": "islamabad.jpg",
+          "commons": "Faisal Mosque Islamabad.jpg"
+        }
+      ]
+    },
+    {
+      "id": "karachi_01",
+      "lat": 24.8607,
+      "lon": 67.0011,
+      "country": "Пакистан",
+      "region": "Южная Азия",
+      "panoramas": [
+        {
+          "file": "karachi.jpg",
+          "commons": "Karachi Clifton Beach.jpg"
+        }
+      ]
+    },
+    {
+      "id": "portland_01",
+      "lat": 45.5152,
+      "lon": -122.6784,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "portland.jpg",
+          "commons": "Portland Oregon skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "austin_01",
+      "lat": 30.2672,
+      "lon": -97.7431,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "austin.jpg",
+          "commons": "Austin Texas skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "nashville_01",
+      "lat": 36.1627,
+      "lon": -86.7816,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "nashville.jpg",
+          "commons": "Nashville skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "detroit_01",
+      "lat": 42.3314,
+      "lon": -83.0458,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "detroit.jpg",
+          "commons": "Detroit skyline from Windsor.jpg"
+        }
+      ]
+    },
+    {
+      "id": "minneapolis_01",
+      "lat": 44.9778,
+      "lon": -93.265,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "minneapolis.jpg",
+          "commons": "Minneapolis skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "calgary_01",
+      "lat": 51.0447,
+      "lon": -114.0719,
+      "country": "Канада",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "calgary.jpg",
+          "commons": "Calgary skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "ottawa_01",
+      "lat": 45.4215,
+      "lon": -75.6972,
+      "country": "Канада",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "ottawa.jpg",
+          "commons": "Parliament Hill Ottawa.jpg"
+        }
+      ]
+    },
+    {
+      "id": "caracas_01",
+      "lat": 10.4806,
+      "lon": -66.9036,
+      "country": "Венесуэла",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "caracas.jpg",
+          "commons": "Caracas Avila.jpg"
+        }
+      ]
+    },
+    {
+      "id": "medellin_01",
+      "lat": 6.2476,
+      "lon": -75.5658,
+      "country": "Колумбия",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "medellin.jpg",
+          "commons": "Medellín skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "cusco_01",
+      "lat": -13.5319,
+      "lon": -71.9675,
+      "country": "Перу",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "cusco.jpg",
+          "commons": "Cusco Plaza de Armas.jpg"
+        }
+      ]
+    },
+    {
+      "id": "la_paz_01",
+      "lat": -16.5,
+      "lon": -68.15,
+      "country": "Боливия",
+      "region": "Южная Америка",
+      "panoramas": [
+        {
+          "file": "la_paz.jpg",
+          "commons": "La Paz Bolivia panorama.jpg"
+        }
+      ]
+    },
+    {
+      "id": "reykjanes_01",
+      "lat": 63.985,
+      "lon": -22.6056,
+      "country": "Исландия",
+      "region": "Скандинавия",
+      "panoramas": [
+        {
+          "file": "reykjanes.jpg",
+          "commons": "Blue Lagoon Iceland.jpg"
+        }
+      ]
+    },
+    {
+      "id": "bergen_01",
+      "lat": 60.3913,
+      "lon": 5.3221,
+      "country": "Норвегия",
+      "region": "Скандинавия",
+      "panoramas": [
+        {
+          "file": "bergen.jpg",
+          "commons": "Bryggen Bergen.jpg"
+        }
+      ]
+    },
+    {
+      "id": "gothenburg_01",
+      "lat": 57.7089,
+      "lon": 11.9746,
+      "country": "Швеция",
+      "region": "Скандинавия",
+      "panoramas": [
+        {
+          "file": "gothenburg.jpg",
+          "commons": "Gothenburg harbour.jpg"
+        }
+      ]
+    },
+    {
+      "id": "turku_01",
+      "lat": 60.4518,
+      "lon": 22.2666,
+      "country": "Финляндия",
+      "region": "Скандинавия",
+      "panoramas": [
+        {
+          "file": "turku.jpg",
+          "commons": "Turku Cathedral.jpg"
+        }
+      ]
+    },
+    {
+      "id": "luxembourg_01",
+      "lat": 49.6116,
+      "lon": 6.1319,
+      "country": "Люксембург",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "luxembourg.jpg",
+          "commons": "Luxembourg City Grund.jpg"
+        }
+      ]
+    },
+    {
+      "id": "monaco_01",
+      "lat": 43.7384,
+      "lon": 7.4246,
+      "country": "Монако",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "monaco.jpg",
+          "commons": "Monaco harbour.jpg"
+        }
+      ]
+    },
+    {
+      "id": "malta_valletta_01",
+      "lat": 35.8989,
+      "lon": 14.5146,
+      "country": "Мальта",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "valletta.jpg",
+          "commons": "Valletta Malta panorama.jpg"
+        }
+      ]
+    },
+    {
+      "id": "nicosia_01",
+      "lat": 35.1856,
+      "lon": 33.3823,
+      "country": "Кипр",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "nicosia.jpg",
+          "commons": "Nicosia old town.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sarajevo_01",
+      "lat": 43.8563,
+      "lon": 18.4131,
+      "country": "Босния и Герцеговина",
+      "region": "Западная Европа",
+      "panoramas": [
+        {
+          "file": "sarajevo.jpg",
+          "commons": "Sarajevo Baščaršija.jpg"
+        }
+      ]
+    },
+    {
+      "id": "skopje_01",
+      "lat": 41.9981,
+      "lon": 21.4254,
+      "country": "Северная Македония",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "skopje.jpg",
+          "commons": "Skopje Macedonia Square.jpg"
+        }
+      ]
+    },
+    {
+      "id": "tirana_01",
+      "lat": 41.3275,
+      "lon": 19.8187,
+      "country": "Албания",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "tirana.jpg",
+          "commons": "Tirana Skanderbeg Square.jpg"
+        }
+      ]
+    },
+    {
+      "id": "chisinau_01",
+      "lat": 47.0105,
+      "lon": 28.8638,
+      "country": "Молдова",
+      "region": "Восточная Европа",
+      "panoramas": [
+        {
+          "file": "chisinau.jpg",
+          "commons": "Chișinău Cathedral.jpg"
+        }
+      ]
+    },
+    {
+      "id": "bahrain_manama_01",
+      "lat": 26.2235,
+      "lon": 50.5876,
+      "country": "Бахрейн",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "manama.jpg",
+          "commons": "Manama Bahrain skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "muscat_01",
+      "lat": 23.588,
+      "lon": 58.3829,
+      "country": "Оман",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "muscat.jpg",
+          "commons": "Sultan Qaboos Grand Mosque.jpg"
+        }
+      ]
+    },
+    {
+      "id": "kuwait_city_01",
+      "lat": 29.3759,
+      "lon": 47.9774,
+      "country": "Кувейт",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "kuwait_city.jpg",
+          "commons": "Kuwait Towers.jpg"
+        }
+      ]
+    },
+    {
+      "id": "abu_dhabi_01",
+      "lat": 24.4539,
+      "lon": 54.3773,
+      "country": "ОАЭ",
+      "region": "Ближний Восток",
+      "panoramas": [
+        {
+          "file": "abu_dhabi.jpg",
+          "commons": "Sheikh Zayed Grand Mosque.jpg"
+        }
+      ]
+    },
+    {
+      "id": "nepal_pokhara_01",
+      "lat": 28.2096,
+      "lon": 83.9856,
+      "country": "Непал",
+      "region": "Южная Азия",
+      "panoramas": [
+        {
+          "file": "pokhara.jpg",
+          "commons": "Pokhara Phewa Lake.jpg"
+        }
+      ]
+    },
+    {
+      "id": "fiji_suva_01",
+      "lat": -18.1248,
+      "lon": 178.4501,
+      "country": "Фиджи",
+      "region": "Океания",
+      "panoramas": [
+        {
+          "file": "suva.jpg",
+          "commons": "Suva Fiji harbour.jpg"
+        }
+      ]
+    },
+    {
+      "id": "honolulu_01",
+      "lat": 21.3069,
+      "lon": -157.8583,
+      "country": "США",
+      "region": "Океания",
+      "panoramas": [
+        {
+          "file": "honolulu.jpg",
+          "commons": "Waikiki Beach Honolulu.jpg"
+        }
+      ]
+    },
+    {
+      "id": "anchorage_01",
+      "lat": 61.2181,
+      "lon": -149.9003,
+      "country": "США",
+      "region": "Северная Америка",
+      "panoramas": [
+        {
+          "file": "anchorage.jpg",
+          "commons": "Anchorage Alaska skyline.jpg"
+        }
+      ]
+    },
+    {
+      "id": "reykjavik_harbour_01",
+      "lat": 64.1505,
+      "lon": -21.9405,
+      "country": "Исландия",
+      "region": "Скандинавия",
+      "panoramas": [
+        {
+          "file": "reykjavik_harbour.jpg",
+          "commons": "Reykjavik harbour panorama.jpg"
+        }
+      ]
+    }
   ]
 }

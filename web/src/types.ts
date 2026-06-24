@@ -13,6 +13,7 @@ export interface Location {
   panorama?: string;
   /** runtime */
   panoramaFile?: string;
+  panoramaIndex?: number;
   heading?: number;
   pitch?: number;
   fov?: number;
@@ -27,7 +28,16 @@ export interface RoundResult {
 }
 
 export type DifficultyId = "easy" | "medium" | "hard" | "impossible";
-export type Screen = "menu" | "difficulty" | "round" | "results" | "summary";
+export type Screen =
+  | "menu"
+  | "difficulty"
+  | "round"
+  | "results"
+  | "summary"
+  | "duelLobby"
+  | "duelRound"
+  | "duelResults"
+  | "duelSummary";
 export type Lang = "ru" | "en" | "kk";
 
 export interface GameSession {
@@ -41,4 +51,34 @@ export interface GameSession {
   lastKm?: number;
   lastScore?: number;
   lastBonus?: number;
+}
+
+export interface DuelGuessResult {
+  lat: number;
+  lon: number;
+  elapsedMs: number;
+  km: number;
+  score: number;
+}
+
+export interface DuelRoundOutcome {
+  myGuess: DuelGuessResult;
+  oppGuess: DuelGuessResult | null;
+  won: boolean | null;
+}
+
+export interface DuelSession {
+  seed: number;
+  difficulty: DifficultyId;
+  locations: Location[];
+  roundIndex: number;
+  myName: string;
+  oppName: string;
+  isHost: boolean;
+  roomId: string;
+  myWins: number;
+  oppWins: number;
+  rounds: DuelRoundOutcome[];
+  pendingOppGuess: DuelGuessResult | null;
+  lastOutcome?: DuelRoundOutcome;
 }

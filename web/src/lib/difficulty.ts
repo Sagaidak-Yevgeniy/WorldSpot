@@ -69,6 +69,8 @@ export const DIFFICULTIES: Record<DifficultyId, DifficultyConfig> = {
   },
 };
 
+export const DUEL_ROUNDS = 5;
+
 export const DIFFICULTY_ORDER: DifficultyId[] = ["easy", "medium", "hard", "impossible"];
 
 export function getDifficulty(id: DifficultyId): DifficultyConfig {
