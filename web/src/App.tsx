@@ -24,9 +24,9 @@ export default function App() {
   }, []);
 
   const startGame = useCallback(
-    (diff: DifficultyId, isRanked: boolean) => {
+    async (diff: DifficultyId, isRanked: boolean) => {
       const cfg = getDifficulty(diff);
-      const locations = pickRound(pool, cfg.rounds);
+      const locations = await pickRound(pool, cfg.rounds);
       setSession({
         locations,
         rounds: [],
@@ -48,7 +48,7 @@ export default function App() {
       totalScore: session.totalScore + score,
       rounds: [
         ...session.rounds,
-        { country: loc.country, region: loc.region, km: Math.round(km), score, timeBonus: bonus },
+        { country: loc.country, region: loc.region, km: Math.round(km * 10) / 10, score, timeBonus: bonus },
       ],
       lastGuess: guess,
       lastKm: km,

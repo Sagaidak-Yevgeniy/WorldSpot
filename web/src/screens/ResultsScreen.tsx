@@ -61,6 +61,7 @@ export function ResultsScreen({ lang, session, location, km, score, bonus, onNex
 
       <div className="results__map">
         <GameMap
+          mapKey={`result-${session.roundIndex}`}
           guess={guess}
           truth={{ lat: location.lat, lon: location.lon }}
           startZoom={3}

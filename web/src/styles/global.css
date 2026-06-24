@@ -624,6 +624,46 @@ button {
   pointer-events: none;
 }
 
+/* Leaflet zoom buttons inside map */
+.game-map {
+  position: relative;
+}
+
+.map-zoom-btns {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  pointer-events: auto;
+}
+
+.map-zoom-btns button {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #fff;
+  color: #222;
+  font-size: 1.3rem;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  border: 1px solid #ccc;
+  line-height: 1;
+}
+
+.map-zoom-btns button:hover {
+  background: #f0f0f0;
+}
+
+.panorama__loader--flat {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /* Pins */
 .pin-wrap {
   background: none !important;

@@ -14,6 +14,9 @@ interface Props {
   onError?: () => void;
 }
 
+const SPHERE_RATIO = 1.92; // only true ~360° equirectangular (2:1)
+const LOAD_TIMEOUT_MS = 12000;
+
 export function PanoramaView({
   src,
   heading = 0,
@@ -27,34 +30,77 @@ export function PanoramaView({
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<Viewer | null>(null);
+  const readyRef = useRef(false);
+  const onReadyRef = useRef(onReady);
+  const onErrorRef = useRef(onError);
+  const onMovementRef = useRef(onMovement);
+
+  onReadyRef.current = onReady;
+  onErrorRef.current = onError;
+  onMovementRef.current = onMovement;
+
   const [mode, setMode] = useState<"loading" | "sphere" | "flat" | "error">("loading");
-  const [flatState, setFlatState] = useState({ x: 0, y: 0, scale: 1.2, dragging: false });
+  const [flatState, setFlatState] = useState({ x: 0, y: 0, scale: 1.25, dragging: false });
+  const [flatLoaded, setFlatLoaded] = useState(false);
   const dragStart = useRef({ x: 0, y: 0, ox: 0, oy: 0 });
   const movement = useRef(0);
 
+  const signalReady = useCallback(() => {
+    if (readyRef.current) return;
+    readyRef.current = true;
+    onReadyRef.current?.();
+  }, []);
+
+  const signalError = useCallback(() => {
+    if (readyRef.current) return;
+    onErrorRef.current?.();
+    setMode("error");
+  }, []);
+
+  // Detect image type + timeout fallback
   useEffect(() => {
+    readyRef.current = false;
+    setMode("loading");
+    setFlatLoaded(false);
+    setFlatState({ x: 0, y: 0, scale: 1.25, dragging: false });
+
     let cancelled = false;
+    const timeout = window.setTimeout(() => {
+      if (!cancelled && !readyRef.current) {
+        // Stuck — try flat mode anyway
+        setMode((m) => (m === "loading" ? "flat" : m));
+      }
+    }, LOAD_TIMEOUT_MS);
+
     const img = new Image();
     img.onload = () => {
       if (cancelled) return;
-      const isSphere = img.naturalWidth >= img.naturalHeight * 1.75;
+      window.clearTimeout(timeout);
+      const isSphere = img.naturalWidth >= img.naturalHeight * SPHERE_RATIO;
       setMode(isSphere ? "sphere" : "flat");
-      if (!isSphere) onReady?.();
     };
     img.onerror = () => {
       if (!cancelled) {
-        setMode("error");
-        onError?.();
+        window.clearTimeout(timeout);
+        signalError();
       }
     };
     img.src = src;
+
     return () => {
       cancelled = true;
+      window.clearTimeout(timeout);
     };
-  }, [src, onReady, onError]);
+  }, [src, signalError]);
 
+  // Photo Sphere Viewer (only for real 360° photos)
   useEffect(() => {
     if (mode !== "sphere" || !containerRef.current) return;
+
+    let destroyed = false;
+    const readyTimeout = window.setTimeout(() => {
+      if (!destroyed && !readyRef.current) setMode("flat");
+    }, LOAD_TIMEOUT_MS);
 
     const viewer = new Viewer({
       container: containerRef.current,
@@ -69,17 +115,30 @@ export function PanoramaView({
     });
 
     viewerRef.current = viewer;
-    viewer.addEventListener("ready", () => onReady?.());
+
+    const onReadyEvt = () => {
+      window.clearTimeout(readyTimeout);
+      signalReady();
+    };
+    const onErrorEvt = () => {
+      window.clearTimeout(readyTimeout);
+      if (!destroyed) setMode("flat");
+    };
+
+    viewer.addEventListener("ready", onReadyEvt);
+    viewer.addEventListener("panorama-error" as never, onErrorEvt);
     viewer.addEventListener("position-updated", () => {
       movement.current += 0.5;
-      onMovement?.(movement.current);
+      onMovementRef.current?.(movement.current);
     });
 
     return () => {
+      destroyed = true;
+      window.clearTimeout(readyTimeout);
       viewer.destroy();
       viewerRef.current = null;
     };
-  }, [mode, src, heading, pitch, zoom, allowLook, allowZoom, onMovement, onReady]);
+  }, [mode, src, heading, pitch, zoom, allowLook, allowZoom, signalReady]);
 
   const onFlatDown = useCallback(
     (e: React.MouseEvent) => {
@@ -97,14 +156,14 @@ export function PanoramaView({
       const dx = e.clientX - dragStart.current.x;
       const dy = e.clientY - dragStart.current.y;
       movement.current += Math.abs(dx) + Math.abs(dy);
-      onMovement?.(movement.current);
+      onMovementRef.current?.(movement.current);
       setFlatState((s) => ({
         ...s,
         x: dragStart.current.ox + dx,
         y: dragStart.current.oy + dy,
       }));
     },
-    [flatState.dragging, allowLook, onMovement]
+    [flatState.dragging, allowLook]
   );
 
   const onFlatUp = useCallback(() => {
@@ -115,7 +174,7 @@ export function PanoramaView({
     if (!allowZoom) return;
     setFlatState((s) => ({
       ...s,
-      scale: Math.min(3, Math.max(1, s.scale + delta * 0.15)),
+      scale: Math.min(3.5, Math.max(1, s.scale + delta * 0.15)),
     }));
   };
 
@@ -179,10 +238,19 @@ export function PanoramaView({
         src={src}
         alt=""
         draggable={false}
+        onLoad={() => {
+          setFlatLoaded(true);
+          signalReady();
+        }}
+        onError={() => signalError()}
         style={{
           transform: `translate(${flatState.x}px, ${flatState.y}px) scale(${flatState.scale})`,
+          opacity: flatLoaded ? 1 : 0,
         }}
       />
+      {!flatLoaded && (
+        <div className="panorama__loader panorama__loader--flat" />
+      )}
       {allowZoom && (
         <div className="panorama__zoom">
           <button type="button" onClick={() => zoomFlat(1)}>

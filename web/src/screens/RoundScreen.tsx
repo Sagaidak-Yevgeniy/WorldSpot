@@ -3,7 +3,7 @@ import type { GameSession, Lang, Location } from "../types";
 import { getDifficulty } from "../lib/difficulty";
 import { tr } from "../lib/i18n";
 import { panoramaUrl } from "../lib/locations";
-import { haversineKm, scoreFromDistance } from "../lib/scoring";
+import { haversineKm, scoreFromDistanceKm } from "../lib/scoring";
 import { PanoramaView } from "../components/PanoramaView";
 import { GameMap } from "../components/GameMap";
 import { GuessButton } from "../components/ui";
@@ -30,7 +30,9 @@ export function RoundScreen({ lang, session, location, onSubmit, onMenu }: Props
 
   const total = session.locations.length;
   const roundNum = session.roundIndex + 1;
-  const src = panoramaUrl(location.panoramaFile ?? "placeholder.jpg");
+  const src = panoramaUrl(location.panoramaFile ?? "oslo.jpg");
+
+  const handleReady = useCallback(() => setReady(true), []);
 
   useEffect(() => {
     submitted.current = false;
@@ -58,20 +60,12 @@ export function RoundScreen({ lang, session, location, onSubmit, onMenu }: Props
     return () => clearInterval(id);
   }, [timer, ready, location.id]);
 
-  useEffect(() => {
-    if (timer === 0 && ready) {
-      const g = guess ?? { lat: 20, lon: 0 };
-      doSubmit(g);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [timer]);
-
   const doSubmit = useCallback(
     (g: { lat: number; lon: number }) => {
       if (submitted.current) return;
       submitted.current = true;
       const km = haversineKm(g.lat, g.lon, location.lat, location.lon);
-      let score = scoreFromDistance(km);
+      let score = scoreFromDistanceKm(km);
       if (cfg.movingPenalty && movement.current > 400) score = Math.round(score * 0.65);
       score = Math.round(score * cfg.scoreMultiplier);
       let bonus = 0;
@@ -84,6 +78,13 @@ export function RoundScreen({ lang, session, location, onSubmit, onMenu }: Props
     [location, cfg, timer, onSubmit]
   );
 
+  useEffect(() => {
+    if (timer === 0 && ready && !submitted.current) {
+      const g = guess ?? { lat: 20, lon: 0 };
+      doSubmit(g);
+    }
+  }, [timer, ready, guess, doSubmit]);
+
   const canGuess = !!guess && ready && !intro;
 
   return (
@@ -91,6 +92,7 @@ export function RoundScreen({ lang, session, location, onSubmit, onMenu }: Props
       {intro && <div className="round__intro" />}
 
       <PanoramaView
+        key={location.id + (location.panoramaFile ?? "")}
         src={src}
         heading={location.heading}
         pitch={location.pitch}
@@ -100,7 +102,7 @@ export function RoundScreen({ lang, session, location, onSubmit, onMenu }: Props
         onMovement={(u) => {
           movement.current = u;
         }}
-        onReady={() => setReady(true)}
+        onReady={handleReady}
       />
 
       <div className="hud">
@@ -148,10 +150,12 @@ export function RoundScreen({ lang, session, location, onSubmit, onMenu }: Props
           </button>
         )}
         <GameMap
+          mapKey={`${location.id}-${expanded ? "x" : "m"}`}
           guess={guess}
           onGuess={(lat, lon) => setGuess({ lat, lon })}
           startZoom={cfg.startZoom}
           maxZoom={cfg.maxZoom}
+          minZoom={1}
           expanded={expanded}
         />
         {!guess && ready && !intro && <p className="map-widget__hint">{tr(lang, "mapHint")}</p>}
