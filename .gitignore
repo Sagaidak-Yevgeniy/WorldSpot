@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+data/player_stats.json
+data/history.json
+data/player_progress.json
+
+web/node_modules/
+web/dist/

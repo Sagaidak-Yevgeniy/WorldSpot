@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Разработка игры WorldSpot</title>
+  <style>
+@page {
+  size: A4;
+  margin: 16mm 14mm 20mm 14mm;
+  @bottom-center {
+    content: "Стр. " counter(page);
+    font-size: 9pt;
+    color: #666;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: #1a1a2e;
+  margin: 0;
+  padding: 0;
+}
+.cover {
+  text-align: center;
+  padding: 48pt 24pt;
+  background: #1a6b4a;
+  color: #fff;
+  page-break-after: always;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.cover h1 { color: #fff; border: none; font-size: 26pt; margin: 0 0 12pt; }
+.cover p { margin: 6pt 0; font-size: 13pt; }
+.toc {
+  page-break-after: always;
+  padding: 16pt 14pt 24pt;
+  break-inside: avoid;
+}
+.toc h2 {
+  margin: 0 0 14pt;
+  font-size: 18pt;
+  color: #1a6b4a;
+  border-bottom: 2pt solid #d1fae5;
+  padding-bottom: 6pt;
+}
+.toc ol { list-style: none; margin: 0; padding: 0; }
+.toc li {
+  display: flex;
+  align-items: baseline;
+  gap: 8pt;
+  padding: 5pt 0;
+  border-bottom: 1pt dotted #d1d5db;
+  font-size: 10.5pt;
+  break-inside: avoid;
+}
+.toc-num { color: #1a6b4a; font-weight: bold; min-width: 18pt; }
+.toc-title { flex: 1; color: #1a1a2e; }
+.toc a { color: inherit; text-decoration: none; }
+.chapter > h1 {
+  color: #1a6b4a;
+  font-size: 18pt;
+  border-bottom: 2pt solid #d1fae5;
+  padding-bottom: 4pt;
+  margin: 18pt 0 10pt;
+  page-break-after: avoid;
+}
+h2 { color: #2d3748; font-size: 13pt; margin: 14pt 0 6pt; page-break-after: avoid; }
+h3 { color: #4a5568; font-size: 11.5pt; margin: 10pt 0 4pt; }
+p { margin: 0 0 8pt; text-align: justify; }
+ul, ol { margin: 4pt 0 10pt; padding-left: 20pt; }
+li { margin: 3pt 0; }
+pre {
+  background: #f4f4f8;
+  border: 1pt solid #ccc;
+  border-left: 3pt solid #1a6b4a;
+  padding: 8pt 10pt;
+  margin: 8pt 0 10pt;
+  font-family: "Courier New", monospace;
+  font-size: 8.5pt;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  page-break-inside: avoid;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.tip { background: #ecfdf5; border: 1pt solid #6ee7b7; padding: 8pt 10pt; margin: 10pt 0; page-break-inside: avoid; print-color-adjust: exact; }
+.warn { background: #fef2f2; border: 1pt solid #fca5a5; padding: 8pt 10pt; margin: 10pt 0; page-break-inside: avoid; print-color-adjust: exact; }
+.practice { background: #f0fdf4; border: 1pt solid #86efac; padding: 8pt 10pt; margin: 10pt 0; page-break-inside: avoid; print-color-adjust: exact; }
+table { width: 100%; border-collapse: collapse; margin: 10pt 0 12pt; font-size: 10pt; page-break-inside: avoid; }
+th, td { border: 1pt solid #bbb; padding: 5pt 7pt; text-align: left; vertical-align: top; word-wrap: break-word; }
+th { background: #edf2f7; font-weight: bold; print-color-adjust: exact; }
+</style>
+</head>
+<body>
+  <div class="cover">
+    <h1>WorldSpot</h1>
+    <p>Географическая игра в духе GeoGuessr</p>
+    <p>Python + pygame · панорамы · карта · статистика · рейтинг</p>
+    <p><small>Методическое пособие v1.0</small></p>
+  </div>
+  <div class="toc">
+    <h2>Содержание</h2>
+    <ol><li><span class="toc-num">1.</span><span class="toc-title"><a href="#ch1">Введение: что такое WorldSpot</a></span></li>
+<li><span class="toc-num">2.</span><span class="toc-title"><a href="#ch2">Анатомия игры в стиле GeoGuessr</a></span></li>
+<li><span class="toc-num">3.</span><span class="toc-title"><a href="#ch3">Подготовка окружения</a></span></li>
+<li><span class="toc-num">4.</span><span class="toc-title"><a href="#ch4">Структура проекта WorldSpot</a></span></li>
+<li><span class="toc-num">5.</span><span class="toc-title"><a href="#ch5">База локаций: data/locations.json</a></span></li>
+<li><span class="toc-num">6.</span><span class="toc-title"><a href="#ch6">Игровой цикл и сцены</a></span></li>
+<li><span class="toc-num">7.</span><span class="toc-title"><a href="#ch7">Панорама: отображение локации</a></span></li>
+<li><span class="toc-num">8.</span><span class="toc-title"><a href="#ch8">Карта мира и выбор точки</a></span></li>
+<li><span class="toc-num">9.</span><span class="toc-title"><a href="#ch9">Система очков: формула Haversine</a></span></li>
+<li><span class="toc-num">10.</span><span class="toc-title"><a href="#ch10">Экран результатов раунда</a></span></li>
+<li><span class="toc-num">11.</span><span class="toc-title"><a href="#ch11">Статистика по странам и регионам</a></span></li>
+<li><span class="toc-num">12.</span><span class="toc-title"><a href="#ch12">Режимы: обычный и рейтинговый</a></span></li>
+<li><span class="toc-num">13.</span><span class="toc-title"><a href="#ch13">История игр и анализ</a></span></li>
+<li><span class="toc-num">14.</span><span class="toc-title"><a href="#ch14">Достижения и рекорды</a></span></li>
+<li><span class="toc-num">15.</span><span class="toc-title"><a href="#ch15">Минималистичный интерфейс</a></span></li>
+<li><span class="toc-num">16.</span><span class="toc-title"><a href="#ch16">Полный цикл раунда в коде</a></span></li>
+<li><span class="toc-num">17.</span><span class="toc-title"><a href="#ch17">Продвинутый уровень: API панорам</a></span></li>
+<li><span class="toc-num">18.</span><span class="toc-title"><a href="#ch18">Git и публикация на GitHub</a></span></li>
+<li><span class="toc-num">19.</span><span class="toc-title"><a href="#ch19">Дорожная карта развития</a></span></li>
+<li><span class="toc-num">20.</span><span class="toc-title"><a href="#ch20">Приложение: управление в шаблоне</a></span></li>
+<li><span class="toc-num">21.</span><span class="toc-title"><a href="#ch21">Заключение</a></span></li></ol>
+  </div>
+  <section class="chapter" id="ch1"><h1>Введение: что такое WorldSpot</h1>
+<p>WorldSpot — географическая игра, вдохновлённая GeoGuessr. Игрок видит панораму улицы или природы и должен указать на карте мира, где, по его мнению, сделан снимок. Чем ближе угадывание к реальной точке, тем больше очков.</p>
+<p>Это пособие проведёт вас от пустой папки до работающего прототипа на Python и pygame и опубликованного репозитория на GitHub. Мы создаём не клон GeoGuessr, а свою игру с уникальной статистикой: процент успеха по странам и регионам вместо флагов.</p>
+<h3>Особенности WorldSpot</h3>
+<ul>
+<li>Знакомый геймплей: панорама → догадка на карте → результат.</li>
+<li>Минималистичный современный интерфейс.</li>
+<li>Обычный и рейтинговый режимы.</li>
+<li>Подробная статистика после каждого раунда.</li>
+<li>Процент угадываний по странам и регионам (без флагов).</li>
+<li>История игр, достижения и личные рекорды.</li>
+</ul>
+<h3>Что вы создадите</h3>
+<ul>
+<li>Окно игры с панорамой и интерактивной картой мира.</li>
+<li>Систему очков по расстоянию (формула Haversine).</li>
+<li>Экран результатов с точностью в км и очками.</li>
+<li>Таблицу статистики: % по странам, лучшие и худшие регионы.</li>
+<li>Сохранение истории и достижений в JSON.</li>
+</ul>
+<div class="practice"><strong>Практика: Старт</strong><ol><li>Установите Python 3.10+ и создайте папку WorldSpot.</li><li>Откройте проект в VS Code или Cursor.</li><li>Прочитайте README.md в корне шаблона.</li></ol></div>
+<section class="chapter" id="ch2"><h1>Анатомия игры в стиле GeoGuessr</h1>
+<p>Классический раунд GeoGuessr состоит из пяти этапов: показ локации, исследование (поворот камеры, движение — в полной версии), выбор точки на карте, подсчёт очков, показ правильного ответа. WorldSpot реализует ядро этого цикла.</p>
+<h3>Игровой цикл раунда</h3>
+<p><strong>1.</strong> PANORAMA — игрок изучает изображение локации.</p>
+<p><strong>2.</strong> GUESS — клик по карте мира, подтверждение.</p>
+<p><strong>3.</strong> REVEAL — линия от догадки до правды, расстояние, очки.</p>
+<p><strong>4.</strong> STATS — обновление % по стране и региону.</p>
+<p><strong>5.</strong> NEXT — следующая локация или итоги серии.</p>
+<table><thead><tr><th>Система</th><th>Назначение</th><th>Сложность</th></tr></thead><tbody><tr><td>Game Loop</td><td>Сцены и переключение режимов</td><td>Низкая</td></tr><tr><td>Locations DB</td><td>JSON с lat/lon, страной, панорамой</td><td>Низкая</td></tr><tr><td>Map Widget</td><td>Клик → координаты</td><td>Средняя</td></tr><tr><td>Scoring</td><td>Haversine + очки</td><td>Средняя</td></tr><tr><td>Stats Engine</td><td>% по странам/регионам</td><td>Средняя</td></tr><tr><td>History + Achievements</td><td>Прогресс игрока</td><td>Низкая</td></tr></tbody></table>
+<div class="tip"><strong>Совет:</strong> Начните с 5–10 тестовых локаций в JSON. Панорамы — любые JPG 1280×720 с указанием координат в метаданных.</div>
+<section class="chapter" id="ch3"><h1>Подготовка окружения</h1>
+<pre><code>cd WorldSpot
+python3 -m venv .venv
+source .venv/bin/activate
+pip install pygame pillow
+pip freeze &gt; requirements.txt</code></pre>
+<pre><code>python3 -c &quot;import pygame; from PIL import Image; print(&#x27;OK&#x27;)&quot;</code></pre>
+<div class="warn"><strong>Важно:</strong> Для реальных уличных панорам позже подключите Mapillary API или Google Street View Static API — нужны ключи и соблюдение лицензий.</div>
+<section class="chapter" id="ch4"><h1>Структура проекта WorldSpot</h1>
+<pre><code>WorldSpot/
+|-- assets/
+|   |-- panoramas/     # JPG панорамы локаций
+|   +-- ui/            # карта мира, иконки
+|-- data/
+|   |-- locations.json # база точек
+|   |-- achievements.json
+|   +-- config.json    # режимы, лимиты
+|-- src/
+|   |-- main.py
+|   |-- settings.py
+|   |-- game.py
+|   |-- scenes/        # menu, round, results, stats
+|   +-- systems/       # scoring, stats, save, locations
+|-- docs/              # эта методичка
+|-- .gitignore
+|-- requirements.txt
++-- README.md</code></pre>
+<pre><code># src/settings.py
+WIDTH, HEIGHT = 1280, 720
+FPS = 60
+TITLE = &#x27;WorldSpot&#x27;
+MAX_SCORE = 5000
+MAP_RECT = (40, 400, 500, 260)  # x,y,w,h
+PANORAMA_RECT = (40, 40, 800, 340)
+ROUND_TIME_RANKED = 180  # секунд</code></pre>
+<section class="chapter" id="ch5"><h1>База локаций: data/locations.json</h1>
+<p>Каждая локация — запись с координатами, страной, регионом и файлом панорамы. Именно здесь хранится «правда», с которой сравнивается догадка игрока.</p>
+<pre><code>{
+  &quot;locations&quot;: [
+    {
+      &quot;id&quot;: &quot;oslo_01&quot;,
+      &quot;lat&quot;: 59.9139,
+      &quot;lon&quot;: 10.7522,
+      &quot;country&quot;: &quot;Норвегия&quot;,
+      &quot;region&quot;: &quot;Скандинавия&quot;,
+      &quot;panorama&quot;: &quot;oslo_fjord.jpg&quot;,
+      &quot;difficulty&quot;: &quot;medium&quot;
+    },
+    {
+      &quot;id&quot;: &quot;tokyo_01&quot;,
+      &quot;lat&quot;: 35.6762,
+      &quot;lon&quot;: 139.6503,
+      &quot;country&quot;: &quot;Япония&quot;,
+      &quot;region&quot;: &quot;Восточная Азия&quot;,
+      &quot;panorama&quot;: &quot;tokyo_street.jpg&quot;
+    }
+  ]
+}</code></pre>
+<pre><code># src/systems/locations.py
+import json
+from pathlib import Path
+from random import shuffle
+
+def load_locations():
+    path = Path(&#x27;data/locations.json&#x27;)
+    return json.loads(path.read_text(encoding=&#x27;utf-8&#x27;))[&#x27;locations&#x27;]
+
+def pick_round(locations, count=5):
+    pool = locations.copy()
+    shuffle(pool)
+    return pool[:count]</code></pre>
+<section class="chapter" id="ch6"><h1>Игровой цикл и сцены</h1>
+<pre><code># src/main.py
+import pygame
+from game import Game
+from settings import WIDTH, HEIGHT, FPS, TITLE
+
+def main():
+    pygame.init()
+    screen = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption(TITLE)
+    clock = pygame.time.Clock()
+    game = Game(screen)
+    running = True
+    while running:
+        dt = clock.tick(FPS) / 1000.0
+        for e in pygame.event.get():
+            if e.type == pygame.QUIT: running = False
+            game.handle_event(e)
+        game.update(dt)
+        game.draw()
+        pygame.display.flip()
+    pygame.quit()</code></pre>
+<p>Game переключает сцены: MenuScene → RoundScene → ResultsScene → StatsScene. Каждая сцена знает, как рисовать UI и обрабатывать клики.</p>
+<section class="chapter" id="ch7"><h1>Панорама: отображение локации</h1>
+<p>В прототипе панорама — изображение JPG, загруженное через pygame.image.load. Масштабируйте его под PANORAMA_RECT, сохраняя пропорции (letterbox).</p>
+<pre><code>def load_panorama(filename):
+    path = ASSETS / &#x27;panoramas&#x27; / filename
+    img = pygame.image.load(str(path)).convert()
+    return pygame.transform.smoothscale(img, (w, h))
+
+def draw_panorama(surface, image, rect):
+    surface.blit(image, rect.topleft)
+    pygame.draw.rect(surface, (255,255,255), rect, 2)</code></pre>
+<div class="tip"><strong>Совет:</strong> Добавьте затемнённые полосы по краям и подпись «Где это?» — минималистичный UI сразу выглядит современнее.</div>
+<section class="chapter" id="ch8"><h1>Карта мира и выбор точки</h1>
+<p>Карта — прямоугольное изображение мира (экваториальная проекция). Клик (mx, my) внутри MAP_RECT переводится в широту и долготу.</p>
+<pre><code>def pixel_to_latlon(mx, my, map_rect):
+    x = (mx - map_rect.x) / map_rect.w
+    y = (my - map_rect.y) / map_rect.h
+  lon = x * 360.0 - 180.0
+  lat = 90.0 - y * 180.0
+  return lat, lon
+
+def latlon_to_pixel(lat, lon, map_rect):
+    x = (lon + 180.0) / 360.0
+    y = (90.0 - lat) / 180.0
+    px = map_rect.x + x * map_rect.w
+    py = map_rect.y + y * map_rect.h
+    return int(px), int(py)</code></pre>
+<p>После клика покажите маркер (красный круг). Кнопка «Угадать» фиксирует выбор.</p>
+<div class="practice"><strong>Практика: Карта</strong><ol><li>Нарисуйте карту мира 500×250 или используйте assets/ui/world_map.png.</li><li>По клику ставьте маркер и выводите lat/lon в углу экрана.</li><li>Заблокируйте повторный клик после подтверждения.</li></ol></div>
+<section class="chapter" id="ch9"><h1>Система очков: формула Haversine</h1>
+<p>GeoGuessr начисляет до 5000 очков. Чем меньше расстояние между догадкой и правдой, тем выше счёт. Расстояние считают по сфере Земли — формула Haversine.</p>
+<pre><code>import math
+
+def haversine_km(lat1, lon1, lat2, lon2):
+    R = 6371.0
+    p = math.pi / 180
+    a = (math.sin((lat2-lat1)*p/2)**2 +
+         math.cos(lat1*p)*math.cos(lat2*p)*math.sin((lon2-lon1)*p/2)**2)
+    return 2 * R * math.asin(math.sqrt(a))
+
+def score_from_distance(km, max_score=5000):
+    if km &lt;= 0.05: return max_score
+    return max(0, int(max_score * math.exp(-km / 2000)))</code></pre>
+<p>Подберите делитель (2000) под желаемую сложность: меньше — щедрее очки.</p>
+<section class="chapter" id="ch10"><h1>Экран результатов раунда</h1>
+<p>После угадывания покажите: расстояние в км, заработанные очки, правильную точку и линию между догадкой и истиной на карте.</p>
+<pre><code>class ResultsScene:
+    def __init__(self, game, location, guess_latlon, distance_km, score):
+        self.location = location
+        self.guess = guess_latlon
+        self.distance_km = distance_km
+        self.score = score
+
+    def draw(self, surface):
+        draw_map_with_markers(surface, self.guess, self.truth)
+        draw_text(surface, f&#x27;{self.distance_km:.0f} км · {self.score} очков&#x27;)</code></pre>
+<section class="chapter" id="ch11"><h1>Статистика по странам и регионам</h1>
+<p>Вместо флагов WorldSpot показывает процент успешных угадываний. Успех — если расстояние меньше порога (например, 500 км) или очки выше 4000.</p>
+<pre><code># src/systems/stats.py
+class RegionStats:
+    def __init__(self):
+        self.by_country = {}  # страна -&gt; {correct, total, avg_km}
+
+    def record(self, country, region, distance_km, score):
+        c = self.by_country.setdefault(country, {&#x27;ok&#x27;:0,&#x27;n&#x27;:0,&#x27;km&#x27;:[]})
+        c[&#x27;n&#x27;] += 1
+        c[&#x27;km&#x27;].append(distance_km)
+        if distance_km &lt; 500 or score &gt;= 4000:
+            c[&#x27;ok&#x27;] += 1
+
+    def percent(self, country):
+        c = self.by_country[country]
+        return 0 if c[&#x27;n&#x27;]==0 else round(100*c[&#x27;ok&#x27;]/c[&#x27;n&#x27;])</code></pre>
+<h3>Что показывать игроку</h3>
+<ul>
+<li>Процент угадываний по каждой стране.</li>
+<li>Средняя точность (среднее расстояние в км).</li>
+<li>Лучшие регионы (высокий %) и худшие (низкий %).</li>
+<li>График прогресса по датам (из history.json).</li>
+</ul>
+<table><thead><tr><th>Страна</th><th>Игр</th><th>Успех %</th><th>Ср. км</th></tr></thead><tbody><tr><td>Норвегия</td><td>12</td><td>67%</td><td>420</td></tr><tr><td>Япония</td><td>8</td><td>38%</td><td>2100</td></tr><tr><td>Бразилия</td><td>5</td><td>80%</td><td>310</td></tr></tbody></table>
+<section class="chapter" id="ch12"><h1>Режимы: обычный и рейтинговый</h1>
+<p>Обычный режим — без таймера, можно изучать панораму сколько угодно. Рейтинговый — лимит времени на раунд (3 минуты), бонус за скорость.</p>
+<pre><code>class RoundScene:
+    def __init__(self, game, location, ranked=False):
+        self.ranked = ranked
+        self.time_left = ROUND_TIME_RANKED if ranked else None
+
+    def update(self, dt):
+        if self.ranked and self.time_left is not None:
+            self.time_left -= dt
+            if self.time_left &lt;= 0:
+                self.auto_submit_worst_guess()</code></pre>
+<section class="chapter" id="ch13"><h1>История игр и анализ</h1>
+<pre><code># savegame / history.json
+{
+  &quot;games&quot;: [
+    {
+      &quot;date&quot;: &quot;2026-06-15&quot;,
+      &quot;mode&quot;: &quot;ranked&quot;,
+      &quot;total_score&quot;: 18420,
+      &quot;rounds&quot;: [
+        {&quot;country&quot;: &quot;Норвегия&quot;, &quot;km&quot;: 120, &quot;score&quot;: 4850}
+      ]
+    }
+  ]
+}</code></pre>
+<p>Экран «История» читает этот файл и рисует список прошлых сессий с датой, режимом и суммой очков. Клик — детали каждого раунда.</p>
+<section class="chapter" id="ch14"><h1>Достижения и рекорды</h1>
+<pre><code>{
+  &quot;achievements&quot;: [
+    {&quot;id&quot;: &quot;first_5000&quot;, &quot;title&quot;: &quot;Идеально!&quot;, &quot;desc&quot;: &quot;5000 очков в раунде&quot;},
+    {&quot;id&quot;: &quot;globe_trotter&quot;, &quot;title&quot;: &quot;Глобус&quot;, &quot;desc&quot;: &quot;10 разных стран&quot;},
+    {&quot;id&quot;: &quot;europe_master&quot;, &quot;title&quot;: &quot;Европа&quot;, &quot;desc&quot;: &quot;80% в Европе&quot;}
+  ]
+}</code></pre>
+<p>После каждого раунда проверяйте условия и разблокируйте достижения. Рекорды: лучший суммарный счёт за 5 раундов, минимальное среднее расстояние.</p>
+<section class="chapter" id="ch15"><h1>Минималистичный интерфейс</h1>
+<ul>
+<li>Фон: тёмно-серый #1a1a2e, текст белый, акцент зелёный #1a6b4a.</li>
+<li>Шрифт: системный sans-serif, крупные заголовки, мало декора.</li>
+<li>Кнопки: прямоугольники с тонкой обводкой, hover — светлее.</li>
+<li>Никаких лишних рамок — панорама и карта занимают 90% экрана.</li>
+</ul>
+<pre><code>COLORS = {
+    &#x27;bg&#x27;: (26, 26, 46),
+    &#x27;accent&#x27;: (26, 107, 74),
+    &#x27;text&#x27;: (240, 240, 245),
+    &#x27;muted&#x27;: (160, 160, 180),
+    &#x27;marker_guess&#x27;: (239, 68, 68),
+    &#x27;marker_truth&#x27;: (34, 197, 94),
+}</code></pre>
+<section class="chapter" id="ch16"><h1>Полный цикл раунда в коде</h1>
+<p><strong>1.</strong> MenuScene: выбор «Играть» / «Рейтинг» / «Статистика».</p>
+<p><strong>2.</strong> RoundScene: загрузка location, показ панорамы и карты.</p>
+<p><strong>3.</strong> Игрок кликает карту → нажимает «Угадать».</p>
+<p><strong>4.</strong> scoring.haversine_km + score_from_distance.</p>
+<p><strong>5.</strong> stats.record(country, region, km, score).</p>
+<p><strong>6.</strong> ResultsScene → кнопка «Далее» или итог серии.</p>
+<div class="tip"><strong>Совет:</strong> В шаблоне WorldSpot этот цикл уже работает — запустите python -m src.main.</div>
+<section class="chapter" id="ch17"><h1>Продвинутый уровень: API панорам</h1>
+<p>Для настоящих уличных панорам используйте Mapillary API (бесплатный tier) или Google Street View Static API. Запрос по lat/lon возвращает изображение.</p>
+<pre><code># Псевдокод Mapillary
+url = f&#x27;https://graph.mapillary.com/images?access_token=TOKEN&#x27;
+      f&#x27;&amp;fields=id&amp;closeto={lon},{lat}&#x27;
+# Скачать thumb URL и кэшировать в assets/panoramas/</code></pre>
+<div class="warn"><strong>Важно:</strong> Храните API-ключи в .env, не коммитьте в git.</div>
+<section class="chapter" id="ch18"><h1>Git и публикация на GitHub</h1>
+<pre><code>git init
+git add .
+git commit -m &#x27;WorldSpot: geographic guessing game prototype&#x27;
+git remote add origin https://github.com/USER/WorldSpot.git
+git push -u origin main</code></pre>
+<pre><code># .gitignore
+.venv/
+__pycache__/
+.env
+savegame.json
+history.json</code></pre>
+<section class="chapter" id="ch19"><h1>Дорожная карта развития</h1>
+<table><thead><tr><th>Неделя</th><th>Задача</th><th>Результат</th></tr></thead><tbody><tr><td>1</td><td>Окно + панорама + карта</td><td>Клик по карте</td></tr><tr><td>2</td><td>Haversine + очки</td><td>Счёт раунда</td></tr><tr><td>3</td><td>Статистика %</td><td>Таблица стран</td></tr><tr><td>4</td><td>Режимы + таймер</td><td>Рейтинг</td></tr><tr><td>5</td><td>История + достижения</td><td>Прогресс</td></tr><tr><td>6</td><td>GitHub + UI полировка</td><td>Релиз</td></tr></tbody></table>
+<section class="chapter" id="ch20"><h1>Приложение: управление в шаблоне</h1>
+<table><thead><tr><th>Действие</th><th>Управление</th></tr></thead><tbody><tr><td>Клик по карте</td><td>ЛКМ</td></tr><tr><td>Подтвердить угадывание</td><td>Enter / Пробел</td></tr><tr><td>Меню</td><td>Esc</td></tr><tr><td>Следующий раунд</td><td>N</td></tr></tbody></table>
+<ul>
+<li>Документация pygame: https://www.pygame.org/docs/</li>
+<li>GeoGuessr для вдохновения: https://www.geoguessr.com/</li>
+<li>Mapillary API: https://www.mapillary.com/developer</li>
+<li>OpenStreetMap: https://www.openstreetmap.org/</li>
+</ul>
+<section class="chapter" id="ch21"><h1>Заключение</h1>
+<p>WorldSpot — это исследование мира через код. Вы научились строить панорамы, карту, географический скоринг и аналитику по странам. Развивайте географическую интуицию в игре и делитесь проектом с друзьями на GitHub.</p>
+<p>Запустите шаблон, пройдите 5 раундов, откройте статистику — и добавьте свою первую локацию в data/locations.json. Удачи в разработке!</p>
+</body>
+</html>
