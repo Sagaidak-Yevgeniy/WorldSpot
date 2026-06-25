@@ -1,5 +1,6 @@
 import type { Lang } from "../types";
 import { tr } from "../lib/i18n";
+import { AUTHOR } from "../lib/site";
 import { LangToggle } from "../components/ui";
 
 interface Props {
@@ -71,7 +72,17 @@ export function MenuScreen({ lang, poolSize, onLang, onClassic, onRanked, onDuel
         </button>
       </div>
 
-      <footer className="menu__footer">{tr(lang, "footer")}</footer>
+      <footer className="menu__footer">
+        {tr(lang, "footerAuthor")}{" "}
+        <a
+          className="menu__footer-link"
+          href={AUTHOR.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {AUTHOR.name}
+        </a>
+      </footer>
     </div>
   );
 }

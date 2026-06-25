@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState, useCallback } from "react";
-import { Viewer } from "@photo-sphere-viewer/core";
-import "@photo-sphere-viewer/core/index.css";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { assetUrl } from "../lib/assets";
 
 interface Props {
   sources: string[];
@@ -13,39 +12,30 @@ interface Props {
   onReady?: () => void;
 }
 
-const SPHERE_RATIO = 1.92;
-const SOURCE_TIMEOUT_MS = 8000;
-const TOTAL_TIMEOUT_MS = 25000;
+const SOURCE_TIMEOUT_MS = 7000;
 
 export function PanoramaView({
   sources,
-  heading = 0,
-  pitch = 0,
-  zoom = 50,
   allowLook = true,
   allowZoom = true,
   onMovement,
   onReady,
 }: Props) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const viewerRef = useRef<Viewer | null>(null);
+  const urls = sources.length ? sources : [assetUrl("panoramas/oslo.jpg"), assetUrl("panorama/oslo_01?n=0")];
+  const [index, setIndex] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [failed, setFailed] = useState(false);
   const readyRef = useRef(false);
   const onReadyRef = useRef(onReady);
   const onMovementRef = useRef(onMovement);
+  const dragStart = useRef({ x: 0, y: 0, ox: 0, oy: 0 });
+  const movement = useRef(0);
+  const [view, setView] = useState({ x: 0, y: 0, scale: 1.2, dragging: false });
 
   onReadyRef.current = onReady;
   onMovementRef.current = onMovement;
 
-  const urls = sources.length ? sources : ["/panoramas/oslo.jpg", "/panorama/oslo_01?n=0"];
-  const [sourceIndex, setSourceIndex] = useState(0);
-  const sourceIndexRef = useRef(0);
-  sourceIndexRef.current = sourceIndex;
-  const activeSrc = urls[sourceIndex] ?? urls[0];
-  const [mode, setMode] = useState<"loading" | "sphere" | "flat" | "failed">("loading");
-  const [flatState, setFlatState] = useState({ x: 0, y: 0, scale: 1.25, dragging: false });
-  const [flatLoaded, setFlatLoaded] = useState(false);
-  const dragStart = useRef({ x: 0, y: 0, ox: 0, oy: 0 });
-  const movement = useRef(0);
+  const activeSrc = urls[index] ?? urls[0];
 
   const signalReady = useCallback(() => {
     if (readyRef.current) return;
@@ -53,231 +43,114 @@ export function PanoramaView({
     onReadyRef.current?.();
   }, []);
 
-  const failAll = useCallback(() => {
-    setMode("failed");
-    signalReady();
-  }, [signalReady]);
-
-  const tryNextSource = useCallback(() => {
-    if (sourceIndexRef.current >= urls.length - 1) {
-      failAll();
-      return false;
-    }
-    readyRef.current = false;
-    setFlatLoaded(false);
-    setMode("loading");
-    setSourceIndex((i) => i + 1);
-    return true;
-  }, [urls.length, failAll]);
+  const tryNext = useCallback(() => {
+    setIndex((i) => {
+      if (i >= urls.length - 1) {
+        setFailed(true);
+        signalReady();
+        return i;
+      }
+      setLoaded(false);
+      return i + 1;
+    });
+  }, [urls.length, signalReady]);
 
   useEffect(() => {
     readyRef.current = false;
-    setSourceIndex(0);
-    setMode("loading");
-    setFlatLoaded(false);
-    setFlatState({ x: 0, y: 0, scale: 1.25, dragging: false });
+    setIndex(0);
+    setLoaded(false);
+    setFailed(false);
+    setView({ x: 0, y: 0, scale: 1.2, dragging: false });
   }, [urls.join("|")]);
 
   useEffect(() => {
-    const hardStop = window.setTimeout(() => {
-      if (!readyRef.current) failAll();
-    }, TOTAL_TIMEOUT_MS);
-    return () => window.clearTimeout(hardStop);
-  }, [urls.join("|"), failAll]);
+    if (loaded || failed) return;
+    const t = window.setTimeout(() => tryNext(), SOURCE_TIMEOUT_MS);
+    return () => window.clearTimeout(t);
+  }, [activeSrc, loaded, failed, tryNext]);
 
-  useEffect(() => {
-    if (mode === "failed") return;
+  const onLoad = () => {
+    setLoaded(true);
+    signalReady();
+  };
 
-    let cancelled = false;
-    const timeout = window.setTimeout(() => {
-      if (!cancelled && !readyRef.current) tryNextSource();
-    }, SOURCE_TIMEOUT_MS);
+  const onError = () => tryNext();
 
-    const img = new Image();
-    img.onload = () => {
-      if (cancelled) return;
-      window.clearTimeout(timeout);
-      if (img.naturalWidth < 400 || img.naturalHeight < 200) {
-        tryNextSource();
-        return;
-      }
-      const isSphere = img.naturalWidth >= img.naturalHeight * SPHERE_RATIO;
-      setMode(isSphere ? "sphere" : "flat");
-    };
-    img.onerror = () => {
-      if (cancelled) return;
-      window.clearTimeout(timeout);
-      tryNextSource();
-    };
-    img.src = activeSrc;
+  const onDown = (e: React.MouseEvent) => {
+    if (!allowLook) return;
+    e.preventDefault();
+    setView((s) => ({ ...s, dragging: true }));
+    dragStart.current = { x: e.clientX, y: e.clientY, ox: view.x, oy: view.y };
+  };
 
-    return () => {
-      cancelled = true;
-      window.clearTimeout(timeout);
-    };
-  }, [activeSrc, tryNextSource, mode]);
+  const onMove = (e: React.MouseEvent) => {
+    if (!view.dragging || !allowLook) return;
+    const dx = e.clientX - dragStart.current.x;
+    const dy = e.clientY - dragStart.current.y;
+    movement.current += Math.abs(dx) + Math.abs(dy);
+    onMovementRef.current?.(movement.current);
+    setView((s) => ({
+      ...s,
+      x: dragStart.current.ox + dx,
+      y: dragStart.current.oy + dy,
+    }));
+  };
 
-  useEffect(() => {
-    if (mode !== "sphere" || !containerRef.current) return;
+  const onUp = () => setView((s) => ({ ...s, dragging: false }));
 
-    let destroyed = false;
-    const readyTimeout = window.setTimeout(() => {
-      if (!destroyed && !readyRef.current) tryNextSource();
-    }, SOURCE_TIMEOUT_MS);
-
-    const viewer = new Viewer({
-      container: containerRef.current,
-      panorama: activeSrc,
-      defaultYaw: `${heading}deg`,
-      defaultPitch: `${pitch}deg`,
-      defaultZoomLvl: Math.min(100, Math.max(0, zoom)),
-      navbar: false,
-      mousemove: allowLook,
-      mousewheel: allowZoom,
-      touchmoveTwoFingers: allowLook,
-    });
-
-    viewerRef.current = viewer;
-
-    const onReadyEvt = () => {
-      window.clearTimeout(readyTimeout);
-      signalReady();
-    };
-    const onErrorEvt = () => {
-      window.clearTimeout(readyTimeout);
-      if (!destroyed) tryNextSource();
-    };
-
-    viewer.addEventListener("ready", onReadyEvt);
-    viewer.addEventListener("panorama-error" as never, onErrorEvt);
-    viewer.addEventListener("position-updated", () => {
-      movement.current += 0.5;
-      onMovementRef.current?.(movement.current);
-    });
-
-    return () => {
-      destroyed = true;
-      window.clearTimeout(readyTimeout);
-      viewer.destroy();
-      viewerRef.current = null;
-    };
-  }, [mode, activeSrc, heading, pitch, zoom, allowLook, allowZoom, signalReady, tryNextSource]);
-
-  const onFlatDown = useCallback(
-    (e: React.MouseEvent) => {
-      if (!allowLook) return;
-      e.preventDefault();
-      setFlatState((s) => ({ ...s, dragging: true }));
-      dragStart.current = { x: e.clientX, y: e.clientY, ox: flatState.x, oy: flatState.y };
-    },
-    [allowLook, flatState.x, flatState.y]
-  );
-
-  const onFlatMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (!flatState.dragging || !allowLook) return;
-      const dx = e.clientX - dragStart.current.x;
-      const dy = e.clientY - dragStart.current.y;
-      movement.current += Math.abs(dx) + Math.abs(dy);
-      onMovementRef.current?.(movement.current);
-      setFlatState((s) => ({
-        ...s,
-        x: dragStart.current.ox + dx,
-        y: dragStart.current.oy + dy,
-      }));
-    },
-    [flatState.dragging, allowLook]
-  );
-
-  const onFlatUp = useCallback(() => {
-    setFlatState((s) => ({ ...s, dragging: false }));
-  }, []);
-
-  const zoomFlat = (delta: number) => {
+  const zoom = (delta: number) => {
     if (!allowZoom) return;
-    setFlatState((s) => ({
+    setView((s) => ({
       ...s,
       scale: Math.min(3.5, Math.max(1, s.scale + delta * 0.15)),
     }));
   };
 
-  if (mode === "loading") {
-    return (
-      <div className="panorama panorama--loading">
-        <div className="panorama__loader" />
-      </div>
-    );
-  }
-
-  if (mode === "failed") {
+  if (failed) {
     return <div className="panorama panorama--fallback" />;
-  }
-
-  if (mode === "sphere") {
-    return (
-      <div className="panorama">
-        <div ref={containerRef} className="panorama__sphere" />
-        {allowZoom && (
-          <div className="panorama__zoom">
-            <button
-              type="button"
-              onClick={() => viewerRef.current?.zoom(viewerRef.current.getZoomLevel() + 5)}
-              aria-label="+"
-            >
-              +
-            </button>
-            <button
-              type="button"
-              onClick={() => viewerRef.current?.zoom(viewerRef.current.getZoomLevel() - 5)}
-              aria-label="−"
-            >
-              −
-            </button>
-          </div>
-        )}
-      </div>
-    );
   }
 
   return (
     <div
-      className={`panorama panorama--flat ${flatState.dragging ? "panorama--grabbing" : ""}`}
-      onMouseDown={onFlatDown}
-      onMouseMove={onFlatMove}
-      onMouseUp={onFlatUp}
-      onMouseLeave={onFlatUp}
+      className={`panorama panorama--flat ${view.dragging ? "panorama--grabbing" : ""}`}
+      onMouseDown={onDown}
+      onMouseMove={onMove}
+      onMouseUp={onUp}
+      onMouseLeave={onUp}
       onWheel={(e) => {
         e.preventDefault();
-        zoomFlat(e.deltaY > 0 ? -1 : 1);
+        zoom(e.deltaY > 0 ? -1 : 1);
       }}
     >
+      {!loaded && (
+        <div className="panorama panorama--loading">
+          <div className="panorama__loader" />
+        </div>
+      )}
       <img
         key={activeSrc}
         src={activeSrc}
         alt=""
         draggable={false}
-        onLoad={() => {
-          setFlatLoaded(true);
-          signalReady();
-        }}
-        onError={() => tryNextSource()}
+        className="panorama__img"
+        onLoad={onLoad}
+        onError={onError}
         style={{
-          transform: `translate(${flatState.x}px, ${flatState.y}px) scale(${flatState.scale})`,
-          opacity: flatLoaded ? 1 : 0,
+          transform: `translate(${view.x}px, ${view.y}px) scale(${view.scale})`,
+          visibility: loaded ? "visible" : "hidden",
         }}
       />
-      {!flatLoaded && <div className="panorama__loader panorama__loader--flat" />}
-      {allowZoom && (
+      {allowZoom && loaded && (
         <div className="panorama__zoom">
-          <button type="button" onClick={() => zoomFlat(1)}>
+          <button type="button" onClick={() => zoom(1)} aria-label="+">
             +
           </button>
-          <button type="button" onClick={() => zoomFlat(-1)}>
+          <button type="button" onClick={() => zoom(-1)} aria-label="−">
             −
           </button>
         </div>
       )}
-      {flatState.dragging && <div className="panorama__crosshair" />}
+      {view.dragging && <div className="panorama__crosshair" />}
     </div>
   );
 }

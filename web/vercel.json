@@ -3,6 +3,6 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
-    { "source": "/panorama/:id", "destination": "/api/panorama?id=:id" }
+    { "source": "/world-spot/panorama/:id", "destination": "/api/panorama?id=:id" }
   ]
 }

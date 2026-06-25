@@ -363,7 +363,16 @@ export default function App() {
   }
 
   if (screen === "summary") {
-    return <SummaryScreen lang={lang} session={session} onMenu={() => setScreen("menu")} />;
+    return (
+      <SummaryScreen
+        lang={lang}
+        session={session}
+        onMenu={() => {
+          setSession(null);
+          setScreen("menu");
+        }}
+      />
+    );
   }
 
   return null;

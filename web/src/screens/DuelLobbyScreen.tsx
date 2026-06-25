@@ -82,22 +82,33 @@ export function DuelLobbyScreen({ lang, poolSize, onLang, onBack, onRoomReady, o
         </p>
 
         {status === "idle" && (
-          <>
-            <label className="duel-lobby__label">
-              {tr(lang, "yourName")}
+          <div className="duel-lobby__form">
+            <div className="duel-lobby__field">
+              <label htmlFor="duel-name" className="duel-lobby__label">
+                {tr(lang, "yourName")}
+              </label>
               <input
+                id="duel-name"
                 type="text"
+                className="duel-lobby__input"
                 maxLength={20}
                 placeholder={tr(lang, "namePlaceholder")}
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && connect()}
+                autoComplete="nickname"
+                autoFocus
               />
-            </label>
-            <button type="button" className="btn-primary" disabled={!name.trim()} onClick={connect}>
+            </div>
+            <button
+              type="button"
+              className="btn-primary duel-lobby__submit"
+              disabled={!name.trim()}
+              onClick={connect}
+            >
               {isGuest ? tr(lang, "joinDuel") : tr(lang, "createDuel")}
             </button>
-          </>
+          </div>
         )}
 
         {status === "connecting" && (

@@ -1,5 +1,6 @@
 import type { Location, PanoramaEntry } from "../types";
 import { fisherYates, mulberry32 } from "./rng";
+import { assetUrl } from "./assets";
 
 const RECENT_KEY = "worldspot_recent_ids";
 const RECENT_MAX = 40;
@@ -11,7 +12,7 @@ function panoramaEntries(loc: Location): PanoramaEntry[] {
 }
 
 export function panoramaProxyUrl(locationId: string, panIndex = 0): string {
-  return `/panorama/${encodeURIComponent(locationId)}?n=${panIndex}`;
+  return assetUrl(`panorama/${encodeURIComponent(locationId)}?n=${panIndex}`);
 }
 
 export interface PanoramaSources {
@@ -23,28 +24,29 @@ export function resolvePanoramaSources(loc: Location): PanoramaSources {
   return { sources: resolvePanoramaUrlChain(loc) };
 }
 
-/** Ordered URLs — local file first, then server proxy (hides commons names). */
+/** Ordered URLs — local file first, then server proxy. */
 export function resolvePanoramaUrlChain(loc: Location): string[] {
   const entries = panoramaEntries(loc);
-  const count = Math.max(entries.length, 1);
+  if (!entries.length) {
+    return [assetUrl("panoramas/oslo.jpg"), panoramaProxyUrl(loc.id, 0)];
+  }
+
   const file = loc.panoramaFile ?? entries[0]?.file ?? "";
   let start = loc.panoramaIndex ?? entries.findIndex((p) => p.file === file);
   if (start < 0) start = 0;
 
   const urls: string[] = [];
-  for (let i = 0; i < count; i++) {
-    const idx = (start + i) % count;
+  for (let i = 0; i < entries.length; i++) {
+    const idx = (start + i) % entries.length;
     const panFile = entries[idx]?.file;
-    if (panFile) {
-      urls.push(`/panoramas/${encodeURIComponent(panFile)}`);
-    }
+    if (panFile) urls.push(assetUrl(`panoramas/${panFile}`));
     urls.push(panoramaProxyUrl(loc.id, idx));
   }
-  return [...new Set(urls)];
+  return urls;
 }
 
 export async function loadLocations(): Promise<Location[]> {
-  const res = await fetch("/data/locations.json");
+  const res = await fetch(assetUrl("data/locations.json"));
   const data = await res.json();
   return data.locations as Location[];
 }

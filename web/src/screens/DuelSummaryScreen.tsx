@@ -1,10 +1,23 @@
 import type { DuelSession, Lang } from "../types";
 import { tr } from "../lib/i18n";
+import { formatDistance, formatScore } from "../lib/scoring";
+import { formatElapsed } from "../lib/duelScoring";
 
 interface Props {
   lang: Lang;
   session: DuelSession;
   onMenu: () => void;
+}
+
+function MenuBackground() {
+  return (
+    <div className="menu__bg" aria-hidden>
+      <div className="menu__bg-aurora" />
+      <div className="menu__bg-grid" />
+      <div className="menu__bg-horizon" />
+      <div className="menu__bg-glow" />
+    </div>
+  );
 }
 
 export function DuelSummaryScreen({ lang, session, onMenu }: Props) {
@@ -14,6 +27,8 @@ export function DuelSummaryScreen({ lang, session, onMenu }: Props) {
 
   return (
     <div className="screen screen--summary screen--duel-summary">
+      <MenuBackground />
+
       <h1>{tr(lang, "duelComplete")}</h1>
 
       <div className="duel-summary__result">
@@ -36,14 +51,22 @@ export function DuelSummaryScreen({ lang, session, onMenu }: Props) {
 
       <ul className="duel-summary__rounds">
         {session.rounds.map((r, i) => (
-          <li key={i}>
-            {tr(lang, "round")} {i + 1}:{" "}
-            {r.won === true ? "✓" : r.won === false ? "✗" : "—"}
+          <li key={i} className="duel-summary__round">
+            <span className="duel-summary__round-title">
+              {tr(lang, "round")} {i + 1}
+            </span>
+            <span className="duel-summary__round-outcome">
+              {r.won === true ? "✓" : r.won === false ? "✗" : "—"}
+            </span>
+            <span className="duel-summary__round-stats">
+              {formatDistance(r.myGuess.km, lang)} · {formatElapsed(r.myGuess.elapsedMs)} ·{" "}
+              {formatScore(r.myGuess.score)} {tr(lang, "pts")}
+            </span>
           </li>
         ))}
       </ul>
 
-      <button type="button" className="btn-primary" onClick={onMenu}>
+      <button type="button" className="btn-primary duel-summary__menu" onClick={onMenu}>
         {tr(lang, "menu")}
       </button>
     </div>
