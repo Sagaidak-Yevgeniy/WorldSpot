@@ -604,18 +604,6 @@
       ]
     },
     {
-      "id": "hamburg_01",
-      "lat": 53.5511,
-      "lon": 9.9937,
-      "country": "Германия",
-      "region": "Западная Европа",
-      "panoramas": [
-        {
-          "file": "hamburg.jpg"
-        }
-      ]
-    },
-    {
       "id": "cologne_01",
       "lat": 50.9375,
       "lon": 6.9603,
@@ -684,18 +672,6 @@
       "panoramas": [
         {
           "file": "edinburgh.jpg"
-        }
-      ]
-    },
-    {
-      "id": "manchester_01",
-      "lat": 53.4808,
-      "lon": -2.2426,
-      "country": "Великобритания",
-      "region": "Западная Европа",
-      "panoramas": [
-        {
-          "file": "manchester.jpg"
         }
       ]
     },
@@ -796,30 +772,6 @@
       ]
     },
     {
-      "id": "lyon_01",
-      "lat": 45.764,
-      "lon": 4.8357,
-      "country": "Франция",
-      "region": "Западная Европа",
-      "panoramas": [
-        {
-          "file": "lyon.jpg"
-        }
-      ]
-    },
-    {
-      "id": "marseille_01",
-      "lat": 43.2965,
-      "lon": 5.3698,
-      "country": "Франция",
-      "region": "Западная Европа",
-      "panoramas": [
-        {
-          "file": "marseille.jpg"
-        }
-      ]
-    },
-    {
       "id": "nice_01",
       "lat": 43.7102,
       "lon": 7.262,
@@ -840,30 +792,6 @@
       "panoramas": [
         {
           "file": "zagreb.jpg"
-        }
-      ]
-    },
-    {
-      "id": "belgrade_01",
-      "lat": 44.7866,
-      "lon": 20.4489,
-      "country": "Сербия",
-      "region": "Восточная Европа",
-      "panoramas": [
-        {
-          "file": "belgrade.jpg"
-        }
-      ]
-    },
-    {
-      "id": "bucharest_01",
-      "lat": 44.4268,
-      "lon": 26.1025,
-      "country": "Румыния",
-      "region": "Восточная Европа",
-      "panoramas": [
-        {
-          "file": "bucharest.jpg"
         }
       ]
     },
@@ -912,18 +840,6 @@
       "panoramas": [
         {
           "file": "vilnius.jpg"
-        }
-      ]
-    },
-    {
-      "id": "ljubljana_01",
-      "lat": 46.0569,
-      "lon": 14.5058,
-      "country": "Словения",
-      "region": "Западная Европа",
-      "panoramas": [
-        {
-          "file": "ljubljana.jpg"
         }
       ]
     },
@@ -988,18 +904,6 @@
       ]
     },
     {
-      "id": "busan_01",
-      "lat": 35.1796,
-      "lon": 129.0756,
-      "country": "Южная Корея",
-      "region": "Восточная Азия",
-      "panoramas": [
-        {
-          "file": "busan.jpg"
-        }
-      ]
-    },
-    {
       "id": "taipei_01",
       "lat": 25.033,
       "lon": 121.5654,
@@ -1048,18 +952,6 @@
       ]
     },
     {
-      "id": "hanoi_01",
-      "lat": 21.0285,
-      "lon": 105.8542,
-      "country": "Вьетнам",
-      "region": "Юго-Восточная Азия",
-      "panoramas": [
-        {
-          "file": "hanoi.jpg"
-        }
-      ]
-    },
-    {
       "id": "ho_chi_minh_01",
       "lat": 10.8231,
       "lon": 106.6297,
@@ -1068,18 +960,6 @@
       "panoramas": [
         {
           "file": "ho_chi_minh.jpg"
-        }
-      ]
-    },
-    {
-      "id": "colombo_01",
-      "lat": 6.9271,
-      "lon": 79.8612,
-      "country": "Шри-Ланка",
-      "region": "Южная Азия",
-      "panoramas": [
-        {
-          "file": "colombo.jpg"
         }
       ]
     },
@@ -1168,18 +1048,6 @@
       ]
     },
     {
-      "id": "miami_01",
-      "lat": 25.7617,
-      "lon": -80.1918,
-      "country": "США",
-      "region": "Северная Америка",
-      "panoramas": [
-        {
-          "file": "miami.jpg"
-        }
-      ]
-    },
-    {
       "id": "seattle_01",
       "lat": 47.6062,
       "lon": -122.3321,
@@ -1236,18 +1104,6 @@
       "panoramas": [
         {
           "file": "philadelphia.jpg"
-        }
-      ]
-    },
-    {
-      "id": "new_orleans_01",
-      "lat": 29.9511,
-      "lon": -90.0715,
-      "country": "США",
-      "region": "Северная Америка",
-      "panoramas": [
-        {
-          "file": "new_orleans.jpg"
         }
       ]
     },
@@ -1312,30 +1168,6 @@
       ]
     },
     {
-      "id": "santiago_01",
-      "lat": -33.4489,
-      "lon": -70.6693,
-      "country": "Чили",
-      "region": "Южная Америка",
-      "panoramas": [
-        {
-          "file": "santiago.jpg"
-        }
-      ]
-    },
-    {
-      "id": "bogota_01",
-      "lat": 4.711,
-      "lon": -74.0721,
-      "country": "Колумбия",
-      "region": "Южная Америка",
-      "panoramas": [
-        {
-          "file": "bogota.jpg"
-        }
-      ]
-    },
-    {
       "id": "quito_01",
       "lat": -0.1807,
       "lon": -78.4678,
@@ -1372,30 +1204,6 @@
       ]
     },
     {
-      "id": "accra_01",
-      "lat": 5.6037,
-      "lon": -0.187,
-      "country": "Гана",
-      "region": "Западная Африка",
-      "panoramas": [
-        {
-          "file": "accra.jpg"
-        }
-      ]
-    },
-    {
-      "id": "casablanca_01",
-      "lat": 33.5731,
-      "lon": -7.5898,
-      "country": "Марокко",
-      "region": "Северная Африка",
-      "panoramas": [
-        {
-          "file": "casablanca.jpg"
-        }
-      ]
-    },
-    {
       "id": "tunis_01",
       "lat": 36.8065,
       "lon": 10.1815,
@@ -1416,18 +1224,6 @@
       "panoramas": [
         {
           "file": "addis_ababa.jpg"
-        }
-      ]
-    },
-    {
-      "id": "dar_es_salaam_01",
-      "lat": -6.7924,
-      "lon": 39.2083,
-      "country": "Танзания",
-      "region": "Восточная Африка",
-      "panoramas": [
-        {
-          "file": "dar_es_salaam.jpg"
         }
       ]
     },
@@ -1480,18 +1276,6 @@
       ]
     },
     {
-      "id": "wellington_01",
-      "lat": -41.2865,
-      "lon": 174.7762,
-      "country": "Новая Зеландия",
-      "region": "Океания",
-      "panoramas": [
-        {
-          "file": "wellington.jpg"
-        }
-      ]
-    },
-    {
       "id": "doha_01",
       "lat": 25.2854,
       "lon": 51.531,
@@ -1500,18 +1284,6 @@
       "panoramas": [
         {
           "file": "doha.jpg"
-        }
-      ]
-    },
-    {
-      "id": "riyadh_01",
-      "lat": 24.7136,
-      "lon": 46.6753,
-      "country": "Саудовская Аравия",
-      "region": "Ближний Восток",
-      "panoramas": [
-        {
-          "file": "riyadh.jpg"
         }
       ]
     },
@@ -1600,18 +1372,6 @@
       ]
     },
     {
-      "id": "vladivostok_01",
-      "lat": 43.1332,
-      "lon": 131.9113,
-      "country": "Россия",
-      "region": "Восточная Азия",
-      "panoramas": [
-        {
-          "file": "vladivostok.jpg"
-        }
-      ]
-    },
-    {
       "id": "ulaanbaatar_01",
       "lat": 47.8864,
       "lon": 106.9057,
@@ -1624,18 +1384,6 @@
       ]
     },
     {
-      "id": "phnom_penh_01",
-      "lat": 11.5564,
-      "lon": 104.9282,
-      "country": "Камбоджа",
-      "region": "Юго-Восточная Азия",
-      "panoramas": [
-        {
-          "file": "phnom_penh.jpg"
-        }
-      ]
-    },
-    {
       "id": "yangon_01",
       "lat": 16.8661,
       "lon": 96.1951,
@@ -1644,30 +1392,6 @@
       "panoramas": [
         {
           "file": "yangon.jpg"
-        }
-      ]
-    },
-    {
-      "id": "dhaka_01",
-      "lat": 23.8103,
-      "lon": 90.4125,
-      "country": "Бангладеш",
-      "region": "Южная Азия",
-      "panoramas": [
-        {
-          "file": "dhaka.jpg"
-        }
-      ]
-    },
-    {
-      "id": "islamabad_01",
-      "lat": 33.6844,
-      "lon": 73.0479,
-      "country": "Пакистан",
-      "region": "Южная Азия",
-      "panoramas": [
-        {
-          "file": "islamabad.jpg"
         }
       ]
     },
@@ -1692,18 +1416,6 @@
       "panoramas": [
         {
           "file": "portland.jpg"
-        }
-      ]
-    },
-    {
-      "id": "austin_01",
-      "lat": 30.2672,
-      "lon": -97.7431,
-      "country": "США",
-      "region": "Северная Америка",
-      "panoramas": [
-        {
-          "file": "austin.jpg"
         }
       ]
     },
@@ -1756,18 +1468,6 @@
       ]
     },
     {
-      "id": "ottawa_01",
-      "lat": 45.4215,
-      "lon": -75.6972,
-      "country": "Канада",
-      "region": "Северная Америка",
-      "panoramas": [
-        {
-          "file": "ottawa.jpg"
-        }
-      ]
-    },
-    {
       "id": "caracas_01",
       "lat": 10.4806,
       "lon": -66.9036,
@@ -1776,18 +1476,6 @@
       "panoramas": [
         {
           "file": "caracas.jpg"
-        }
-      ]
-    },
-    {
-      "id": "medellin_01",
-      "lat": 6.2476,
-      "lon": -75.5658,
-      "country": "Колумбия",
-      "region": "Южная Америка",
-      "panoramas": [
-        {
-          "file": "medellin.jpg"
         }
       ]
     },
@@ -1804,30 +1492,6 @@
       ]
     },
     {
-      "id": "la_paz_01",
-      "lat": -16.5,
-      "lon": -68.15,
-      "country": "Боливия",
-      "region": "Южная Америка",
-      "panoramas": [
-        {
-          "file": "la_paz.jpg"
-        }
-      ]
-    },
-    {
-      "id": "reykjanes_01",
-      "lat": 63.985,
-      "lon": -22.6056,
-      "country": "Исландия",
-      "region": "Скандинавия",
-      "panoramas": [
-        {
-          "file": "reykjanes.jpg"
-        }
-      ]
-    },
-    {
       "id": "bergen_01",
       "lat": 60.3913,
       "lon": 5.3221,
@@ -1836,18 +1500,6 @@
       "panoramas": [
         {
           "file": "bergen.jpg"
-        }
-      ]
-    },
-    {
-      "id": "gothenburg_01",
-      "lat": 57.7089,
-      "lon": 11.9746,
-      "country": "Швеция",
-      "region": "Скандинавия",
-      "panoramas": [
-        {
-          "file": "gothenburg.jpg"
         }
       ]
     },
@@ -1888,18 +1540,6 @@
       ]
     },
     {
-      "id": "malta_valletta_01",
-      "lat": 35.8989,
-      "lon": 14.5146,
-      "country": "Мальта",
-      "region": "Западная Европа",
-      "panoramas": [
-        {
-          "file": "valletta.jpg"
-        }
-      ]
-    },
-    {
       "id": "nicosia_01",
       "lat": 35.1856,
       "lon": 33.3823,
@@ -1908,30 +1548,6 @@
       "panoramas": [
         {
           "file": "nicosia.jpg"
-        }
-      ]
-    },
-    {
-      "id": "sarajevo_01",
-      "lat": 43.8563,
-      "lon": 18.4131,
-      "country": "Босния и Герцеговина",
-      "region": "Западная Европа",
-      "panoramas": [
-        {
-          "file": "sarajevo.jpg"
-        }
-      ]
-    },
-    {
-      "id": "skopje_01",
-      "lat": 41.9981,
-      "lon": 21.4254,
-      "country": "Северная Македония",
-      "region": "Восточная Европа",
-      "panoramas": [
-        {
-          "file": "skopje.jpg"
         }
       ]
     },
@@ -1960,54 +1576,6 @@
       ]
     },
     {
-      "id": "bahrain_manama_01",
-      "lat": 26.2235,
-      "lon": 50.5876,
-      "country": "Бахрейн",
-      "region": "Ближний Восток",
-      "panoramas": [
-        {
-          "file": "manama.jpg"
-        }
-      ]
-    },
-    {
-      "id": "muscat_01",
-      "lat": 23.588,
-      "lon": 58.3829,
-      "country": "Оман",
-      "region": "Ближний Восток",
-      "panoramas": [
-        {
-          "file": "muscat.jpg"
-        }
-      ]
-    },
-    {
-      "id": "kuwait_city_01",
-      "lat": 29.3759,
-      "lon": 47.9774,
-      "country": "Кувейт",
-      "region": "Ближний Восток",
-      "panoramas": [
-        {
-          "file": "kuwait_city.jpg"
-        }
-      ]
-    },
-    {
-      "id": "abu_dhabi_01",
-      "lat": 24.4539,
-      "lon": 54.3773,
-      "country": "ОАЭ",
-      "region": "Ближний Восток",
-      "panoramas": [
-        {
-          "file": "abu_dhabi.jpg"
-        }
-      ]
-    },
-    {
       "id": "nepal_pokhara_01",
       "lat": 28.2096,
       "lon": 83.9856,
@@ -2016,54 +1584,6 @@
       "panoramas": [
         {
           "file": "pokhara.jpg"
-        }
-      ]
-    },
-    {
-      "id": "fiji_suva_01",
-      "lat": -18.1248,
-      "lon": 178.4501,
-      "country": "Фиджи",
-      "region": "Океания",
-      "panoramas": [
-        {
-          "file": "suva.jpg"
-        }
-      ]
-    },
-    {
-      "id": "honolulu_01",
-      "lat": 21.3069,
-      "lon": -157.8583,
-      "country": "США",
-      "region": "Океания",
-      "panoramas": [
-        {
-          "file": "honolulu.jpg"
-        }
-      ]
-    },
-    {
-      "id": "anchorage_01",
-      "lat": 61.2181,
-      "lon": -149.9003,
-      "country": "США",
-      "region": "Северная Америка",
-      "panoramas": [
-        {
-          "file": "anchorage.jpg"
-        }
-      ]
-    },
-    {
-      "id": "reykjavik_harbour_01",
-      "lat": 64.1505,
-      "lon": -21.9405,
-      "country": "Исландия",
-      "region": "Скандинавия",
-      "panoramas": [
-        {
-          "file": "reykjavik_harbour.jpg"
         }
       ]
     }
