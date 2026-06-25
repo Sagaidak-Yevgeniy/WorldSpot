@@ -483,6 +483,12 @@ button {
   color: var(--text-dim);
 }
 
+.panorama--fallback {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(16, 172, 132, 0.15), transparent),
+    linear-gradient(160deg, #1a2332 0%, #0a0c10 100%);
+}
+
 .panorama__loader {
   width: 48px;
   height: 48px;

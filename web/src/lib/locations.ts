@@ -23,7 +23,7 @@ export function resolvePanoramaSources(loc: Location): PanoramaSources {
   return { sources: resolvePanoramaUrlChain(loc) };
 }
 
-/** Ordered proxy URLs — current pan first, then the rest for this city. */
+/** Ordered URLs — local file first, then server proxy (hides commons names). */
 export function resolvePanoramaUrlChain(loc: Location): string[] {
   const entries = panoramaEntries(loc);
   const count = Math.max(entries.length, 1);
@@ -33,9 +33,14 @@ export function resolvePanoramaUrlChain(loc: Location): string[] {
 
   const urls: string[] = [];
   for (let i = 0; i < count; i++) {
-    urls.push(panoramaProxyUrl(loc.id, (start + i) % count));
+    const idx = (start + i) % count;
+    const panFile = entries[idx]?.file;
+    if (panFile) {
+      urls.push(`/panoramas/${encodeURIComponent(panFile)}`);
+    }
+    urls.push(panoramaProxyUrl(loc.id, idx));
   }
-  return urls;
+  return [...new Set(urls)];
 }
 
 export async function loadLocations(): Promise<Location[]> {

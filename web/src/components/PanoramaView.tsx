@@ -3,7 +3,6 @@ import { Viewer } from "@photo-sphere-viewer/core";
 import "@photo-sphere-viewer/core/index.css";
 
 interface Props {
-  /** Try each URL in order when load fails. */
   sources: string[];
   heading?: number;
   pitch?: number;
@@ -15,7 +14,8 @@ interface Props {
 }
 
 const SPHERE_RATIO = 1.92;
-const LOAD_TIMEOUT_MS = 12000;
+const SOURCE_TIMEOUT_MS = 8000;
+const TOTAL_TIMEOUT_MS = 25000;
 
 export function PanoramaView({
   sources,
@@ -36,12 +36,12 @@ export function PanoramaView({
   onReadyRef.current = onReady;
   onMovementRef.current = onMovement;
 
-  const urls = sources.length ? sources : ["/panorama/oslo_01?n=0"];
+  const urls = sources.length ? sources : ["/panoramas/oslo.jpg", "/panorama/oslo_01?n=0"];
   const [sourceIndex, setSourceIndex] = useState(0);
   const sourceIndexRef = useRef(0);
   sourceIndexRef.current = sourceIndex;
   const activeSrc = urls[sourceIndex] ?? urls[0];
-  const [mode, setMode] = useState<"loading" | "sphere" | "flat">("loading");
+  const [mode, setMode] = useState<"loading" | "sphere" | "flat" | "failed">("loading");
   const [flatState, setFlatState] = useState({ x: 0, y: 0, scale: 1.25, dragging: false });
   const [flatLoaded, setFlatLoaded] = useState(false);
   const dragStart = useRef({ x: 0, y: 0, ox: 0, oy: 0 });
@@ -53,14 +53,22 @@ export function PanoramaView({
     onReadyRef.current?.();
   }, []);
 
+  const failAll = useCallback(() => {
+    setMode("failed");
+    signalReady();
+  }, [signalReady]);
+
   const tryNextSource = useCallback(() => {
-    if (sourceIndexRef.current >= urls.length - 1) return false;
+    if (sourceIndexRef.current >= urls.length - 1) {
+      failAll();
+      return false;
+    }
     readyRef.current = false;
     setFlatLoaded(false);
     setMode("loading");
     setSourceIndex((i) => i + 1);
     return true;
-  }, [urls.length]);
+  }, [urls.length, failAll]);
 
   useEffect(() => {
     readyRef.current = false;
@@ -71,24 +79,35 @@ export function PanoramaView({
   }, [urls.join("|")]);
 
   useEffect(() => {
+    const hardStop = window.setTimeout(() => {
+      if (!readyRef.current) failAll();
+    }, TOTAL_TIMEOUT_MS);
+    return () => window.clearTimeout(hardStop);
+  }, [urls.join("|"), failAll]);
+
+  useEffect(() => {
+    if (mode === "failed") return;
+
     let cancelled = false;
     const timeout = window.setTimeout(() => {
-      if (!cancelled && !readyRef.current && !tryNextSource()) {
-        signalReady();
-      }
-    }, LOAD_TIMEOUT_MS);
+      if (!cancelled && !readyRef.current) tryNextSource();
+    }, SOURCE_TIMEOUT_MS);
 
     const img = new Image();
     img.onload = () => {
       if (cancelled) return;
       window.clearTimeout(timeout);
+      if (img.naturalWidth < 400 || img.naturalHeight < 200) {
+        tryNextSource();
+        return;
+      }
       const isSphere = img.naturalWidth >= img.naturalHeight * SPHERE_RATIO;
       setMode(isSphere ? "sphere" : "flat");
     };
     img.onerror = () => {
       if (cancelled) return;
       window.clearTimeout(timeout);
-      if (!tryNextSource()) signalReady();
+      tryNextSource();
     };
     img.src = activeSrc;
 
@@ -96,18 +115,15 @@ export function PanoramaView({
       cancelled = true;
       window.clearTimeout(timeout);
     };
-  }, [activeSrc, tryNextSource, signalReady]);
+  }, [activeSrc, tryNextSource, mode]);
 
   useEffect(() => {
     if (mode !== "sphere" || !containerRef.current) return;
 
     let destroyed = false;
     const readyTimeout = window.setTimeout(() => {
-      if (!destroyed && !readyRef.current) {
-        if (tryNextSource()) return;
-        setMode("flat");
-      }
-    }, LOAD_TIMEOUT_MS);
+      if (!destroyed && !readyRef.current) tryNextSource();
+    }, SOURCE_TIMEOUT_MS);
 
     const viewer = new Viewer({
       container: containerRef.current,
@@ -129,10 +145,7 @@ export function PanoramaView({
     };
     const onErrorEvt = () => {
       window.clearTimeout(readyTimeout);
-      if (!destroyed) {
-        if (tryNextSource()) return;
-        setMode("flat");
-      }
+      if (!destroyed) tryNextSource();
     };
 
     viewer.addEventListener("ready", onReadyEvt);
@@ -196,6 +209,10 @@ export function PanoramaView({
     );
   }
 
+  if (mode === "failed") {
+    return <div className="panorama panorama--fallback" />;
+  }
+
   if (mode === "sphere") {
     return (
       <div className="panorama">
@@ -243,9 +260,7 @@ export function PanoramaView({
           setFlatLoaded(true);
           signalReady();
         }}
-        onError={() => {
-          if (!tryNextSource()) signalReady();
-        }}
+        onError={() => tryNextSource()}
         style={{
           transform: `translate(${flatState.x}px, ${flatState.y}px) scale(${flatState.scale})`,
           opacity: flatLoaded ? 1 : 0,
